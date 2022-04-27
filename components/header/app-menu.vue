@@ -22,10 +22,8 @@
 				if(settings) {
                     const menu = settings.filter(item => item.key_id === 'header_menu_main')
                     this.value = menu.length ? menu[0].value : []
-                    console.log(this.value)
 				}
 				return this.value
-
 			}
 		}
 	}

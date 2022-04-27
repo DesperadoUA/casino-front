@@ -8,9 +8,9 @@
                     <div class="full-width">
                         <app_search />
                         <div class="wrapper_category_menu">
-                            <app_block_menu />
-                            <app_block_menu />
-                            <app_block_menu />
+                            <app_block_menu :title="highestRating" :value="thirdMenu"/>
+                            <app_block_menu :title="popularCasinos" :value="firstMenu"/>
+                            <app_block_menu :title="newCasino" :value="secondMenu"/>
                         </div>
                     </div>
                 </div>
@@ -21,12 +21,17 @@
 <script>
 import app_search from './app-search'
 import app_block_menu from './app-block-menu.vue'
+import TRANSLATE from '~/helpers/translate'
+import config from '~/config'
 export default {
         name: "app-category-menu",
         data(){
             return {
                close: true,
-               statusDrawer: true
+               statusDrawer: true,
+               popularCasinos: TRANSLATE.POPULAR_CASINOS[config.LANG],
+               highestRating: TRANSLATE.HIGHEST_RATING[config.LANG],
+               newCasino: TRANSLATE.NEW_CASINOS[config.LANG]
             }
         },
         components:{app_search, app_block_menu},
@@ -48,6 +53,30 @@ export default {
             drawerState() {
                 const status = this.statusDrawer ? '' : 'activ_menu'
                 return `drawer_menu ${status}`
+            },
+            firstMenu(){
+                const settings = this.$store.getters['settings/getSettings']
+				if(settings) {
+                    const menu = settings.filter(item => item.key_id === 'header_menu_1')
+                    return menu.length ? menu[0].value : []
+				}
+				return []
+            },
+            secondMenu(){
+                const settings = this.$store.getters['settings/getSettings']
+				if(settings) {
+                    const menu = settings.filter(item => item.key_id === 'header_menu_2')
+                    return menu.length ? menu[0].value : []
+				}
+				return []
+            },
+            thirdMenu(){
+                const settings = this.$store.getters['settings/getSettings']
+				if(settings) {
+                    const menu = settings.filter(item => item.key_id === 'header_menu_3')
+                    return menu.length ? menu[0].value : []
+				}
+				return []
             }
         }
 

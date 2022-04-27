@@ -1,23 +1,11 @@
 <template>
     <nav class="block_menu shadow">
-        <div class="menu_title">
-            Категории казино
+        <div class="menu_title" v-if='title !== ""'>
+            {{title}}
         </div>
         <ul>
-            <li class="block_menu_item">
-                <a href="#">Популярные казино</a>
-            </li>
-            <li class="block_menu_item">
-                <a href="#" >Казино с лицензией</a>
-            </li>
-            <li class="block_menu_item">
-                <a href="#" >Казино с минимальным депозитом</a>
-            </li>
-            <li class="block_menu_item">
-                <a href="#" >Казино с большими выплатами</a>
-            </li>
-            <li class="block_menu_item">
-                <a href="#" >Казино с бездепозитными бонусами</a>
+            <li v-for="(item, index) in value" :key="index" class="block_menu_item">
+                <NuxtLink :to="item.value_2">{{item.value_1}}</NuxtLink>
             </li>
         </ul>
     </nav>
@@ -25,18 +13,15 @@
 <script>
 export default {
         name: "app-block-menu",
+        props: {
+            title: {type: String, default: ''},
+            value: {type: Array, default: []}
+        },
         data(){
             return {
             
             }
-        },
-        methods: {
-			
-        },
-        computed: {
-           
         }
-
     }
 </script>
 <style scoped>
@@ -83,6 +68,7 @@ export default {
         color: var(--white);
         text-decoration: none;
         font-family: var(--font);
+        display: block;
     }
 
 </style>
