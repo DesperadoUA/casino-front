@@ -34,7 +34,7 @@
 }
 .home_link a {
     text-decoration: none;
-    font-family: var(--font-bold);
+    font-family: var(--font);
     color: var(--black);
     font-size: 35px;
 }

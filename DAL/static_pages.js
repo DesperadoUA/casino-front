@@ -3,7 +3,7 @@ import config from './config';
 
 class DAL_Pages {
     static getData(data) {
-        return axios.post(config.API_URL, data)
+        return axios.get(config.API_URL+'pages/' + data.url)
     }
 }
 export default DAL_Pages

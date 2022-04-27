@@ -1,54 +1,326 @@
 <template>
-  <section :class="'content casino_table_wrapper '+bg">
+  <section class="casino_table_wrapper">
       <div class="container casino_table_container">
-          <h2 v-if="title" class="casino_table_title">{{title}}</h2>
-          <div class="casino_item" v-for="item in currentPosts" :key="item.id">
-              <div class="casino_item_thumbnail">
-                  <img :src="item.thumbnail" loading="lazy" width="200" height="100" @click="refActivate(item)" />
-              </div>
-              <div class="casino_item_rating casino_item_column ">
-                  <div class="casino_item_column_wrapper">
-                      <div class="casino_item_title">{{item.title}}</div>
-                      <div class="casino_item_bonus"
-                           v-if="item.bonuses.length != 0"
-                      >
-                          {{item.bonuses[0].bonuses_title}}:
-                          <span class="color-gold">
-                               {{item.bonuses[0].bonuses_value}}
-                          </span>
-                      </div>
-                      <div class="casino_item_short_desc">{{item.short_desc}}</div>
-                  </div>
-              </div>
-              <div class="casino_item_packet casino_item_column ">
-                  <div v-if="item.bonuses.length > 1" class="casino_item_packet_item">
-                    <div class="casino_item_title_packet">{{item.bonuses[1].bonuses_title}}</div>
-                    <div class="casino_item_title_packet color-gold">{{item.bonuses[1].bonuses_value}}</div>
-                  </div>
-              </div>
-              <div class="casino_item_weiger casino_item_column ">
-                  <div v-if="item.bonuses.length >= 2" class="casino_item_packet_item">
-                    <div class="casino_item_title_packet">{{item.bonuses[2].bonuses_title}}</div>
-                    <div class="casino_item_title_packet color-gold">{{item.bonuses[2].bonuses_value}}</div>
-                  </div>
-              </div>
-              <div class="casino_item_buttons casino_item_column ">
-                  <div class="casino_item_buttons_box">
-                    <button class="btn_ref" @click="refActivate(item)">Перейти в казино</button>
-                      <div class="casino_item_button_licensed">
-                          <img src="/img/license.png" v-if="item.licensed.length !== 0" />
-                          <img v-for="(itemLicensed, indexLicensed) in item.licensed"
-                               :key="indexLicensed"
-                               :src="itemLicensed"
-                               class="casino_item_licensed"
-                          />
-                          <NuxtLink :to="item.permalink" class="casino_item_permalink">Обзор</NuxtLink>
-                      </div>
-                  </div>
-              </div>
-          </div>  
-          <div class="casino_table_btn_wrapper" v-if="posts.length > (numberPostOnQuery*postCurrentPage)">
-              <button class="btn_review" @click="postShowMore">Загрузить еще</button>
+          <h2 class="casino_table_title">Онлайн казино Украины</h2>
+           <div class="content">
+              <p>На свете существует множество развлечений, однако в современном динамичном мире пользуются спросом игровые автоматы, широко представленные в портфолио ведущих брендов. Такое доступное, лёгкое и увлекательное занятие - активация эмуляторов - радует каждого пользователя, вне зависимости от его профессиональных умений и навыков. Жители разных регионов предпочитают комфортный домашний отдых, что полностью соответствует концепции игры в режиме реального времени.</p> 
+              <p>Клиент абсолютно ничем не рискует - надежность и безопасность гарантируется специальными аудиторскими компаниями и подтверждается лицензиями, представленными на сайтах виртуальных порталов. На результативность сессии влияет выбор виртуального казино: геймеру следует определиться с онлайн ресурсом, обеспечивающим полноценное и приятное времяпровождение.</p>
+              <p>На свете существует множество развлечений, однако в современном динамичном мире пользуются спросом игровые автоматы, широко представленные в портфолио ведущих брендов. Такое доступное, лёгкое и увлекательное занятие - активация эмуляторов - радует каждого пользователя, вне зависимости от его профессиональных умений и навыков. Жители разных регионов предпочитают комфортный домашний отдых, что полностью соответствует концепции игры в режиме реального времени.</p> 
+              <p>Клиент абсолютно ничем не рискует - надежность и безопасность гарантируется специальными аудиторскими компаниями и подтверждается лицензиями, представленными на сайтах виртуальных порталов. На результативность сессии влияет выбор виртуального казино: геймеру следует определиться с онлайн ресурсом, обеспечивающим полноценное и приятное времяпровождение.</p>
+          </div>
+          <div class="casino_table_row">
+            <article class="casino_table_item">
+               <div class="card">
+                    <div class="face face1">
+                        <figure>
+                            <img src="/img/612f253fcdbf5.jpeg">
+                            <figcaption>
+                                <a href="#">Обзор казино 777 Original</a>
+                            </figcaption>
+                        </figure>
+                        <div class="casino_table_item_box">
+                            <div class="casino_table_item_box_title">
+                                Приветственный бонус:
+                            </div>
+                            <div class="casino_table_item_box_value">
+                                24 000 UAH
+                            </div>
+                        </div>
+                        <div class="casino_table_item_box white_border_top">
+                            <div class="casino_table_item_box_title">
+                                Фриспины:
+                            </div>
+                            <div class="casino_table_item_box_value">
+                                x30
+                            </div>
+                        </div>
+                        <div class="casino_table_item_rating_wrapper">
+                            <div class="item_rating">
+                                <div class="item_rating_wrapper">
+                                    <div class="item_progress" style="width:95%"></div>
+                                </div>
+                            </div>
+                            <div class="item_rating_value">
+                                95/100
+                            </div>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <table>
+                                <caption>Характеристики игрового зала</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">значение</th>
+                                        <th scope="col">описание</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                      <td>Год основания</td>
+                                      <td>2019</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Мин. депозит</td>
+                                      <td>100 грн / 200 руб / 5$ </td>
+                                    </tr>
+                                    <tr>
+                                      <td>Мин. вывод</td>
+                                      <td>100 грн / 200 руб / 5$ </td>
+                                    </tr>
+                                    <tr>
+                                      <td>Лицензия</td>
+                                      <td>Кюрасао </td>
+                                    </tr>
+                                    <tr>
+                                      <td>Срок вывода</td>
+                                      <td>до 24 часов</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Кол. игр</td>
+                                      <td>1570</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <footer class="casino_footer">
+                            <button class="cta_btn shadow">Перейти</button>
+                            <a class="cta_btn shadow">Обзор</a>
+                        </footer>
+                    </div>
+               </div>
+            </article>
+            <article class="casino_table_item">
+               <div class="card">
+                    <div class="face face1">
+                        <img src="/img/60b61ea0afbb6.jpeg">
+                        <a href="#">Обзор казино Joker</a>
+                        <div class="casino_table_item_box">
+                            <div class="casino_table_item_box_title">
+                                Приветственный бонус:
+                            </div>
+                            <div class="casino_table_item_box_value">
+                                24 000 UAH
+                            </div>
+                        </div>
+                        <div class="casino_table_item_box white_border_top">
+                            <div class="casino_table_item_box_title">
+                                Фриспины:
+                            </div>
+                            <div class="casino_table_item_box_value">
+                                x30
+                            </div>
+                        </div>
+                        <div class="casino_table_item_rating_wrapper">
+                            <div class="item_rating">
+                                <div class="item_rating_wrapper">
+                                    <div class="item_progress" style="width:75%"></div>
+                                </div>
+                            </div>
+                            <div class="item_rating_value">
+                                75/100
+                            </div>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <table>
+                                <caption>Характеристики игрового зала</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">значение</th>
+                                        <th scope="col">описание</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                      <td>Год основания</td>
+                                      <td>2019</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Мин. депозит</td>
+                                      <td>100 грн / 200 руб / 5$ </td>
+                                    </tr>
+                                    <tr>
+                                      <td>Мин. вывод</td>
+                                      <td>100 грн / 200 руб / 5$ </td>
+                                    </tr>
+                                    <tr>
+                                      <td>Лицензия</td>
+                                      <td>Кюрасао </td>
+                                    </tr>
+                                    <tr>
+                                      <td>Срок вывода</td>
+                                      <td>до 24 часов</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Кол. игр</td>
+                                      <td>1570</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <footer class="casino_footer">
+                            <button class="cta_btn shadow">Перейти</button>
+                            <a class="cta_btn shadow">Обзор</a>
+                        </footer>
+                    </div>
+               </div>
+            </article>
+            <article class="casino_table_item">
+                <div class="card">
+                    <div class="face face1">
+                        <img src="/img/60b73fa2c8d6f.jpeg">
+                         <a href="#">Обзор казино Cosmolot</a>
+                         <div class="casino_table_item_box">
+                            <div class="casino_table_item_box_title">
+                                Приветственный бонус:
+                            </div>
+                            <div class="casino_table_item_box_value">
+                                24 000 UAH
+                            </div>
+                        </div>
+                        <div class="casino_table_item_box white_border_top">
+                            <div class="casino_table_item_box_title">
+                                Фриспины:
+                            </div>
+                            <div class="casino_table_item_box_value">
+                                x30
+                            </div>
+                        </div>
+                        <div class="casino_table_item_rating_wrapper">
+                            <div class="item_rating">
+                                <div class="item_rating_wrapper">
+                                    <div class="item_progress" style="width:95%"></div>
+                                </div>
+                            </div>
+                            <div class="item_rating_value">
+                                95/100
+                            </div>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <table>
+                                <caption>Характеристики игрового зала</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">значение</th>
+                                        <th scope="col">описание</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                      <td>Год основания</td>
+                                      <td>2019</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Мин. депозит</td>
+                                      <td>100 грн / 200 руб / 5$ </td>
+                                    </tr>
+                                    <tr>
+                                      <td>Мин. вывод</td>
+                                      <td>100 грн / 200 руб / 5$ </td>
+                                    </tr>
+                                    <tr>
+                                      <td>Лицензия</td>
+                                      <td>Кюрасао </td>
+                                    </tr>
+                                    <tr>
+                                      <td>Срок вывода</td>
+                                      <td>до 24 часов</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Кол. игр</td>
+                                      <td>1570</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <footer class="casino_footer">
+                            <button class="cta_btn shadow">Перейти</button>
+                            <a class="cta_btn shadow">Обзор</a>
+                        </footer>
+                    </div>
+                </div>
+            </article>
+            <article class="casino_table_item">
+                <div class="card">
+                    <div class="face face1">
+                        <img src="/img/613b616584fca.jpeg">
+                        <a href="#">Обзор казино ReelEmperor</a>
+                        <div class="casino_table_item_box">
+                            <div class="casino_table_item_box_title">
+                                Приветственный бонус:
+                            </div>
+                            <div class="casino_table_item_box_value">
+                                24 000 UAH
+                            </div>
+                        </div>
+                        <div class="casino_table_item_box white_border_top">
+                            <div class="casino_table_item_box_title">
+                                Фриспины:
+                            </div>
+                            <div class="casino_table_item_box_value">
+                                x30
+                            </div>
+                        </div>
+                        <div class="casino_table_item_rating_wrapper">
+                            <div class="item_rating">
+                                <div class="item_rating_wrapper">
+                                    <div class="item_progress" style="width:95%"></div>
+                                </div>
+                            </div>
+                            <div class="item_rating_value">
+                                95/100
+                            </div>
+                        </div>
+                    </div>
+                    <div class="face face2">
+                        <div class="content">
+                            <table>
+                                <caption>Характеристики игрового зала</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">значение</th>
+                                        <th scope="col">описание</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                      <td>Год основания</td>
+                                      <td>2019</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Мин. депозит</td>
+                                      <td>100 грн / 200 руб / 5$ </td>
+                                    </tr>
+                                    <tr>
+                                      <td>Мин. вывод</td>
+                                      <td>100 грн / 200 руб / 5$ </td>
+                                    </tr>
+                                    <tr>
+                                      <td>Лицензия</td>
+                                      <td>Кюрасао </td>
+                                    </tr>
+                                    <tr>
+                                      <td>Срок вывода</td>
+                                      <td>до 24 часов</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Кол. игр</td>
+                                      <td>1570</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <footer class="casino_footer">
+                            <button class="cta_btn shadow">Перейти</button>
+                            <a class="cta_btn shadow">Обзор</a>
+                        </footer>
+                    </div>
+                </div>
+            </article>
           </div>
       </div>
   </section>
@@ -73,296 +345,274 @@
         },
         data(){
             return {
-                numberPostOnQuery: 7,
-                postCurrentPage: 1,
+                
             }
         },
-        computed: {
-            currentPosts() {
-               return this.posts.slice(0, this.numberPostOnQuery * this.postCurrentPage)
-            }
-        },
-        methods: {
-            refActivate(item) {
-                if(item.ref.length !== 0) {
-                    const min = 0
-                    const max = item.ref.length - 1
-                    const random = Math.floor(Math.random() * (max - min + 1)) + min
-                    window.open(item.ref[random].casino_ref, '_blank')
-                } 
-            },
-            postShowMore(){
-                this.postCurrentPage += 1
-            }
-        }
+        
     }
 </script>
 
 <style scoped>
-
-.btn_ref {
-    width: 167px;
-    height: 37px;
-    background: var(--green);
-    border: 1px solid var(--white-opacity-max);
-    box-sizing: border-box;
-    box-shadow: inset 0px 0px 4px rgba(255, 255, 255, 0.25);
-    border-radius: 10px;
-    display: inline-block;
+.casino_table_wrapper {
+        background: var(--strong-blue);
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.casino_table_title {
+    font-family: var(--font);
+    color: var(--white);
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+.casino_table_row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.casino_table_item {
+    display: flex;
+    justify-content: center;
+    width: 33%;
+}
+.casino_table_item:nth-child(3n+1) {
+    justify-content: flex-start;
+}
+.casino_table_item:nth-child(3n+3) {
+    justify-content: flex-end;
+}
+.card {
+    position: relative;
+    width: 300px;
+    height: 350px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.card .face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.card .face.face1 {
+    top:0;
+    left:0;
+    transition-property: left, z-index, transform;
+    transition-delay: 0s, .5s, .5s;
+    transition-duration: .5s, .0s, .5s;
+    z-index: 2;
+    transform: translate(-10px, -10px);
+    background: white;
     text-align: center;
-    font-family: var(--font-bold);
-    font-style: normal;
-    font-size: 12px;
-    line-height: 37px;
-    text-align: center;
-    color: var(--light-black);
-    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+     border-radius: 10px;
+     overflow: hidden;
+}
+.card:hover .face.face1 {
+    transition-property: transform, z-index, left;
+    transition-delay: 0s, .5s, .5s;
+    transition-duration: .5s, .0s, .5s;
+    transform: translate(170px, -10px);
+    z-index: 1;
+    left:-160px;
+}
+.card .face.face1 img {
+    width: 100%;
+}
+.card .face.face1 a {
+    color: var(--black);
     text-decoration: none;
-    margin-bottom: 15px;
+    font-family: var(--font);
+    font-size: 20px;
+    display: block;
+    padding: 10px;
+    font-weight: bold;
+}
+.card .face.face2 {
+    top:0;
+    left:0;
+    transition-property: left, z-index, transform;
+    transition-delay: 0s, .5s, .5s;
+    transition-duration: .5s, .0s, .5s;
+    z-index: 1;
+    background: black;
+    border-radius: 10px;
+}
+.card:hover .face.face2 {
+    transition-property: transform, z-index, left;
+    transition-delay: 0s, .5s, .5s;
+    transition-duration: .5s, .0s, .5s;
+    transform: translate(-160px, -10px);
+    z-index: 2;
+    left: 160px;
+}
+
+.card .face.face2 .content {
+    padding: 10px 10px 5px 10px;
+    box-sizing: border-box;
+}
+.casino_table_item_box {
+    display: flex;
+    align-items: center;
+    background: var(--fiolet);
+}
+.white_border_top {
+    border-top: 2px solid white;
+}
+.casino_table_item_box_title, .casino_table_item_box_value {
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+    font-family: var(--font);
+}
+.face caption {
+    font-family: var(--font);
+    white-space: nowrap;
+    text-align: center;
+    border-bottom: 1px solid var(--gold);
+    display: block;
+}
+.face td {
+    font-size: 14px;
+    padding: 5px;
+    border-bottom: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
+}
+.face tr:last-child td {
+    border-bottom: none;
+}
+.face td:nth-child(1) {
+    width: 40%;
+    border-left: none;
+}
+.face td:nth-child(2) {
+    width: 60%;
+    text-align: right;
+}
+.face table {
+    border-radius: 2px;
+    border: 2px solid var(--gold);
+}
+.face thead {
+    width: 100%;
+    font-size: 12px;
+    display: block;
+    box-sizing: border-box;
+}
+.face tbody {
+    display: block;
+}
+.face tr {
+    display: flex;
+}
+.face th {
+    background: transparent;
+    height: auto;
+    font-family: var(--font);
+    color: var(--light-blue);
+    text-transform: uppercase;
+    padding: 5px;
+    font-size: 12px;
+    border-bottom: 1px solid var(--gold);
+    display: block;
+}
+.face th:nth-child(1) {
+    border-right: 1px solid var(--gold);
+    width: 40%;
+}
+.face th:nth-child(2) {
+    width: 60%;
+}
+.casino_table_item_box_title {
+    font-size: 14px;
+    color:var(--white);
+    font-weight: bold;
+    position: relative;
+}
+.casino_table_item_box_title::after {
+    content:'';
+    width: 2px;
+    background: white;
+    height:80%;
+    top:10%;
+    right:0;
+    position: absolute;
+}
+.casino_table_item_box_value  {
+    font-size: 20px;
+    color: var(--gold);
+    font-weight: bold;
+}
+.casino_table_item_rating_wrapper {
+    display: flex;
+    position: relative;
+    padding: 10px;
+    background: linear-gradient(#616161 0%, #333 10%, #222);
+    transition: 0.5s;
+    align-items: center;
+}
+.casino_table_item_rating_wrapper:before {
+    content: '';
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,.1);
+    z-index: 10;
+}
+.item_rating {
+    width: 75%;
+}
+.item_rating_value {
+    width: 25%;
+    font-family: var(--font);
+    color:var(--white);
+    display: flex;
+    line-height: 20px;
+    justify-content: flex-end;
+}
+.item_rating_wrapper {
+    height: 20px;
+    border-radius: 10px;
+    background: #151515;
+    box-shadow: inset 0 0 10px #000;
+    overflow: hidden;
+    position: relative;
+}
+.item_progress {
+    position:absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #ffee54, #ff00ca);
+    box-shadow: inset 0 0 2px #000;
+    animation: animate 2s ease-in-out forwards;
+}
+@keyframes animate {
+    from {
+        width: 0;
+    }
+}
+
+.cta_btn {
+    position: relative;
+    width: 110px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-family: var(--font);
+    color: var(--white);
+    background: var(--light-black);
     cursor: pointer;
     text-transform: uppercase;
 }
-
-
- .casino_item {
-     background: var(--light-black);
-     box-sizing: border-box;
-     border-radius: 15px;
-     margin-top: 10px;
-     margin-bottom: 10px;
-     display: flex;
-     overflow: hidden;
- }
-
- .casino_item_thumbnail {
-     position: relative;
-     width: 14%;
-     text-align: center;
-     box-sizing: border-box;
-     cursor: pointer;
- }
- .casino_item_thumbnail img {
-     margin-top: 10px;
-     margin-bottom: 5px;
- }
-
- .casino_item_rating {
-     width:36%;
-     box-sizing: border-box;
-     min-width: 36%;
- }
- .casino_item_packet {
-     width: 16%;
-      min-width: 16%;
-     box-sizing: border-box;
- }
- .casino_item_packet_item {
+.casino_footer {
+    padding: 5px 15px;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    width: 170px;
-     min-width: 170px;
+    justify-content: space-around;
     box-sizing: border-box;
-     padding: 5px;
- }
- .casino_item_weiger {
-     width: 16%;
-      min-width: 16%;
-     box-sizing: border-box;
- }
- .casino_item_buttons {
-     width: 15%;
-     background: var(--middle-black);
- }
- .casino_item_buttons_box {
-     display: flex;
-     justify-content: center;
-     flex-wrap: wrap;
- }
- .casino_item_column {
-     padding: 10px 25px;
-     display: flex;
-     align-items: center;
-     flex-wrap: wrap;
- }
- .casino_item_title {
-    font-family: var(--font-bold);
-    font-style: normal;
-    font-size: 16px;
-    line-height: 20px;
-    color: var(--white);
-    width: 100%;
-    margin-bottom: 10px;
- }
-.casino_item_title_packet
- {
-    width: 100%;
-    font-family: var(--font-semi);
-    font-style: normal;
-    font-size: 12px;
-    line-height: 16px;
-    text-transform: uppercase;
-    color: var(--light-blue);
-    text-align: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
- }
- .casino_item_bonus {
-    font-family: var(--font-semi);
-     color: var(--white);
-     font-size: 18px;
-     margin-bottom: 10px;
- }
- .casino_item_thumbnail img {
-         width: 100%;
-         object-fit: contain;
-     }
- .casino_table_title {
-    text-align: left;
-     color: var(--white);
-     font-family: var(--font);
-     font-size: 32px;
- }
- .casino_item_short_desc {
-     font-family: var(--font);
-     color: var(--light-blue);
-     font-size: 12px;
- }
- .casino_item_button_licensed {
-     width: 100%;
-     text-align: center;
- }
- .casino_item_button_licensed img {
-     margin: 0px 3px;
- }
-.casino_item_button_licensed a {
-    text-transform: uppercase;
-    color: var(--light-blue);
-    text-decoration: none;
-    font-family: var(--font);
-    font-size: 14px;
+    background: transparent;
 }
-.casino_item_licensed {
-    height: 15px;
-}
- @media (min-width: 320px) and (max-width: 767px) {
-    .casino_table_title {
-        text-align: center;
-        font-size: 26px;
-    }
-    .casino_item {
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-    }
-    .casino_item_thumbnail {
-        width: 100%;
-    }
-    .casino_item_rating {
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid var(--white-opacity-max);
-    }
-    .casino_item_short_desc {
-        display: none;
-    }
-    .casino_item_packet {
-        width: 50%;
-        padding: 10px;
-        border-bottom-left-radius: 10px;
-    }
-    .casino_item_packet_item {
-        min-width: auto;
-        width: 100%;
-    }
-    .casino_item_bonus {
-        width: 100%;
-    }
-    .casino_item_column_wrapper {
-        width: 100%;
-    }
-    .casino_item_bonus span {
-        width: 100%;
-        display: block;
-    }
-    .casino_item_weiger {
-        width: 50%;
-        padding: 10px;
-    }
-    .casino_item_buttons {
-        width: 100%;
-        padding: 0px;
-    }
-    .casino_item_buttons_box {
-        flex-direction: column-reverse;
-        width: 100%;
-    }
-    .btn_ref {
-        width: 100%;
-        margin-bottom: 0px;
-        border-top-left-radius: 0px;
-        border-top-right-radius: 0px;
-    }
-    .casino_item_button_licensed {
-        padding: 10px;
-    }
- }
- @media (min-width: 768px) and (max-width: 1200px) {
-     .casino_table_title {
-         width: 100%;
-     }
-     .casino_item {
-         flex-wrap: wrap;
-         margin-bottom: 20px;
-         width: 48%;
-     }
-     .casino_item_thumbnail {
-         width: 100%;
-     }
-     .casino_item_rating {
-         width: 100%;
-         text-align: center;
-         border-bottom: 1px solid var(--white-opacity-max);
-     }
-     .casino_item_short_desc {
-         display: none;
-     }
-     .casino_item_packet {
-         width: 50%;
-         padding: 10px;
-         border-bottom-left-radius: 10px;
-     }
-     .casino_item_packet_item {
-         min-width: auto;
-         width: 100%;
-     }
-     .casino_item_weiger {
-         width: 50%;
-         padding: 10px;
-     }
-     .casino_item_buttons {
-         width: 100%;
-         padding: 0px;
-     }
-     .casino_item_buttons_box {
-         flex-direction: column-reverse;
-         width: 100%;
-     }
-     .btn_ref {
-         width: 100%;
-         margin-bottom: 0px;
-         border-top-left-radius: 0px;
-         border-top-right-radius: 0px;
-     }
-     .casino_item_button_licensed {
-         padding: 10px;
-     }
-     .casino_table_container {
-         display: flex;
-         flex-wrap: wrap;
-         justify-content: space-between;
-     }
-     .casino_table_btn_wrapper {
-         width: 100%;
-     }
- }
+
 </style>

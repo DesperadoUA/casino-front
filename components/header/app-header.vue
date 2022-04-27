@@ -1,5 +1,6 @@
 <template>
   <header>
+    <app_category_menu />
     <div class="container header_container">
       <app_logo />
       <div class="burger" @click="showMenu">
@@ -14,7 +15,6 @@
       </div>
       <div :class="'header_right_part '+menuOpen">
         <app_menu />
-        <app_search />
       </div>
       <button @click="searchActivate" class="mobile_search">
         <svg class="search__icon" width="19" height="19" viewBox="0 0 345 344.6" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +27,7 @@
 <script>
     import app_logo from './app-logo'
     import app_menu from './app-menu'
-	import app_search from './app-search'
+    import app_category_menu from './app-category-menu.vue'
     export default {
         name: "app-header",
         data(){
@@ -38,7 +38,7 @@
 				drawerOpen: ''
             }
         },
-        components: {app_logo, app_menu, app_search},
+        components: {app_logo, app_menu, app_category_menu},
         async mounted(){
           await this.$store.dispatch('options/setOptions')
           const options = this.$store.getters['options/getOptions']
@@ -73,7 +73,7 @@
       position: fixed;
       top:0px;
       left:0px;
-      z-index: 2;
+      z-index: 7;
     }
   .header_container {
     padding: 10px 0px;

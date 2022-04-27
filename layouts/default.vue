@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Header />
+    <!-- <Header /> -->
     <nuxt />
-    <Footer />
+   <!-- <Footer /> -->
   </div>
 </template>
 
@@ -42,7 +42,6 @@
     --strong-blue-gradient: linear-gradient(0deg, #E7F0FB, #E7F0FB), linear-gradient(0deg, #F9FCFF, #F9FCFF), #C4C4C4;
     --orange-gradient: linear-gradient(#ff3c00, #ff7300af);
     --font: 'Podkova';
-    --font-bold: 'Open Sans Bold';
     --font-semi: 'Open Sans Semi';
     --banner: url('/img/main_bg.webp');
     --mob_banner: url('/img/bg-mob.webp');
@@ -91,6 +90,9 @@
   .border-none {
     border: none!important;
   }
+  .full-width {
+    width: 100%;
+  }
 /* Content */
   .content {
     padding-top: 30px;
@@ -134,7 +136,7 @@
   }
   .content h2, h3, h4, h5, h6 {
       text-align: left;
-      font-family:  var(--font-bold);
+      font-family:  var(--font);
       font-style: normal;
       font-weight: bold;
       color: var(--white);
@@ -222,7 +224,7 @@ table {
     border-radius: 10px;
     display: inline-block;
     text-align: center;
-    font-family: var(--font-bold);
+    font-family: var(--font);
     font-style: normal;
     font-size: 17px;
     color: var(--white);
@@ -237,4 +239,36 @@ table {
     padding-top:40px;
     padding-bottom: 30px;
   }
+
+
+  .shadow {
+    position: relative;
+    background: linear-gradient(0deg, #000, #262626);
+}
+.shadow:before, .shadow:after {
+    content:'';
+    position: absolute;
+    top:-2px;
+    left:-2px;
+    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background-size: 400%;
+    z-index: -2;
+    animation: shadow_animate 40s linear infinite;
+}
+.shadow:after {
+    filter: blur(20px);
+}
+@keyframes shadow_animate {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 300% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
 </style>

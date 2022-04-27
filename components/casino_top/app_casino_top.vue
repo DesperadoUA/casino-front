@@ -85,7 +85,7 @@
     }
     .casino_top_list li a {
         text-decoration: none;
-        font-family: var(--font-bold);
+        font-family: var(--font);
     }
     .casino_top_list .green {
       color: var(--green);
@@ -119,7 +119,7 @@
         object-fit: cover;
     }
     .casino_top_title {
-        font-family: var(--font-bold);
+        font-family: var(--font);
         font-style: normal;
         font-size: 22px;
         line-height: 30px;
@@ -138,7 +138,7 @@
         border-radius: 10px;
         display: inline-block;
         text-align: center;
-        font-family: var(--font-bold);
+        font-family: var(--font);
         font-style: normal;
         font-size: 12px;
         color: var(--black);

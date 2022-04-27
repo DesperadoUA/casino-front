@@ -104,7 +104,7 @@
         border-radius: 10px;
     }
     .blog_card_item_permalink {
-        font-family: var(--font-bold);
+        font-family: var(--font);
         font-style: normal;
         font-size: 18px;
         line-height: 22px;
