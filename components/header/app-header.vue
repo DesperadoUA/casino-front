@@ -2,7 +2,7 @@
   <header>
     <app_category_menu />
     <div class="container header_container">
-      <!-- <app_logo /> -->
+      <app_logo />
       <div class="burger" @click="showMenu">
         <span class="burger_item"></span>
         <span class="burger_item"></span>
@@ -40,6 +40,7 @@
         },
         components: {app_logo, app_menu, app_category_menu},
         async mounted(){
+          await this.$store.dispatch('options/setOptions')
           await this.$store.dispatch('settings/setSettings')
           const settings = this.$store.getters['settings/getSettings']
           this.settings = settings
@@ -65,6 +66,7 @@
 <style>
     header{
       width: 100%;
+      height: 80px;
       box-sizing: border-box;
       background: var(--strong-blue);
       padding-top: 5px;

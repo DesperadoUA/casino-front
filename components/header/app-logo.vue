@@ -19,9 +19,8 @@
 		},
 		computed:{
 			logo() {
-				const options = this.$store.getters['options/getOptions']
-				if(options) this.value = options.logo
-				return this.value
+                const options = this.$store.getters['options/getOptions']
+				return options ? options.filter(item => item.key_id === 'logo')[0].value : ''
 			}
 		}
 	}
