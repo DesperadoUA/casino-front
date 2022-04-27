@@ -2,7 +2,7 @@
     <nav class="menu">
         <ul>
             <li v-for="(item, index) in menu" :key="index">
-                <NuxtLink :to="item.permalink" class="menu_item_link">{{item.title}}</NuxtLink>
+                <NuxtLink :to="item.value_2" class="menu_item_link">{{item.value_1}}</NuxtLink>
             </li>
         </ul>
     </nav>
@@ -18,9 +18,11 @@
 		},
 		computed:{
 			menu() {
-				const options = this.$store.getters['options/getOptions']
-				if(options) {
-					this.value = options.menu
+				const settings = this.$store.getters['settings/getSettings']
+				if(settings) {
+                    const menu = settings.filter(item => item.key_id === 'header_menu_main')
+                    this.value = menu.length ? menu[0].value : []
+                    console.log(this.value)
 				}
 				return this.value
 

@@ -1,4 +1,4 @@
-import DAL_Options from '~/DAL/options'
+import DAL_Options from '../DAL/options'
 
 export const state = () => ({
     options: null
@@ -12,7 +12,7 @@ export const actions = {
     async setOptions({commit}, state) {
         if(this.state.options.options === null)  {
             const result = await DAL_Options.getOptions()
-            commit('setOptions', result.data)
+            commit('setOptions', result.data.body)
         } 
     },
 }

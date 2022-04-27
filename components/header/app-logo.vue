@@ -20,9 +20,7 @@
 		computed:{
 			logo() {
 				const options = this.$store.getters['options/getOptions']
-				if(options) {
-					this.value = options.logo
-				}
+				if(options) this.value = options.logo
 				return this.value
 			}
 		}

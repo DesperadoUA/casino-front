@@ -2,7 +2,7 @@
   <header>
     <app_category_menu />
     <div class="container header_container">
-      <app_logo />
+      <!-- <app_logo /> -->
       <div class="burger" @click="showMenu">
         <span class="burger_item"></span>
         <span class="burger_item"></span>
@@ -14,7 +14,7 @@
         &#10006;
       </div>
       <div :class="'header_right_part '+menuOpen">
-        <app_menu />
+      <app_menu />
       </div>
       <button @click="searchActivate" class="mobile_search">
         <svg class="search__icon" width="19" height="19" viewBox="0 0 345 344.6" xmlns="http://www.w3.org/2000/svg">
@@ -32,34 +32,33 @@
         name: "app-header",
         data(){
             return {
-                options: {},
-				menuOpen: '',
+                settings: {},
+				        menuOpen: '',
                 crossOpen: '',
-				drawerOpen: ''
+				        drawerOpen: ''
             }
         },
         components: {app_logo, app_menu, app_category_menu},
         async mounted(){
-          await this.$store.dispatch('options/setOptions')
-          const options = this.$store.getters['options/getOptions']
-          this.options = options
+          await this.$store.dispatch('settings/setSettings')
+          const settings = this.$store.getters['settings/getSettings']
+          this.settings = settings
         },
         methods: {
-			showMenu(){
-				this.menuOpen = 'menu_show'
-                this.crossOpen = 'show'
-                this.drawerOpen = 'drawer_show'
-			},
-            closeMenu() {
-				this.menuOpen = ''
-				this.crossOpen = ''
-				this.drawerOpen = ''
-            },
-			searchActivate(){
-				console.log('Mobile search')
-				this.$store.dispatch('common/setShowSearch', !this.$store.getters['common/getShowSearch'])
-			}
-        }
+			  showMenu(){
+				    this.menuOpen = 'menu_show'
+            this.crossOpen = 'show'
+            this.drawerOpen = 'drawer_show'
+			  },
+        closeMenu() {
+				    this.menuOpen = ''
+				    this.crossOpen = ''
+				    this.drawerOpen = ''
+        },
+			  searchActivate(){
+				//this.$store.dispatch('common/setShowSearch', !this.$store.getters['common/getShowSearch'])
+			  }
+      }
     }
 </script>
 
