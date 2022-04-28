@@ -1,18 +1,19 @@
 <template>
-  <footer v-if="changeOptions !== null">
-    <nav class="footer_menu" v-if="options.footer_menu.length !== 0">
+  <footer v-if="changeSettings !== null">
+    <nav class="footer_menu">
       <div class="container">
         <ul>
           <li class="footer_menu_item" 
-              v-for="(item, index) in options.footer_menu" 
+              v-for="(item, index) in menu" 
                     :key="index">
-                      <NuxtLink no-prefetch :to="item.permalink" >
-                          {{item.title}}
+                      <NuxtLink no-prefetch :to="item.value_2" >
+                          {{item.value_1}}
                       </NuxtLink>
           </li>
         </ul>
       </div>
     </nav>
+    <!--
     <div class="footer_partners">
       <div class="container footer_partners_wrapper">
         <div class="footer_partners_left">
@@ -35,17 +36,10 @@
         </div>
       </div>
     </div>
+    -->
     <div class="container footer_container">
       <div class="footer_text">
-        {{options.footer_text}}
-        <img v-if="options.security_logo" 
-             :src="options.security_logo"  
-             class="security_logo dmca-badge" 
-             width="120" 
-             height="25"
-             loading="lazy"
-             title="DMCA.com Protection Status"
-             />
+        {{text}}
       </div>
     </div>
   </footer>
@@ -56,13 +50,31 @@
         name: "app-footer",
         data(){
             return {
-               options: null
+               settings: null,
+               footerMenu: [],
+               footerText: ''
             }
         },
         computed: {
-          changeOptions(){
-            this.options = this.$store.getters['options/getOptions']
-            return this.options
+          changeSettings(){
+            this.settings = this.$store.getters['settings/getSettings']
+            return this.settings
+          },
+          menu(){
+            const settings = this.$store.getters['settings/getSettings']
+            if(settings) {
+                const menu = settings.filter(item => item.key_id === 'footer_menu')
+                this.footerMenu = menu.length ? menu[0].value : []
+            }
+            return this.footerMenu
+          },
+          text(){
+            const settings = this.$store.getters['settings/getSettings']
+            if(settings) {
+                const text = settings.filter(item => item.key_id === 'footer_text')
+                this.footerText = text.length ? text[0].value : []
+            }
+            return this.footerText
           }
         }
     }
@@ -81,7 +93,7 @@
   color: var(--white);
   text-transform: uppercase;
   text-decoration: none;
-  font-family: 'Open Sans Semi';
+  font-family: var(--font);
 }
     footer {
       padding-bottom: 25px;
