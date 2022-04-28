@@ -1,40 +1,18 @@
 <template>
   <aside class="main_banner">
        <div class="container banner_container">
-           <div class="card">
+           <div class="card"  v-for="(item, index) in bonuses" :key="index">
                <div class="icon">
-                   <img src="/img/60ab5dc288337.png" width="100" height="100"  />
+                   <img :src="item.src" 
+                        width="100" 
+                        height="100"  />
                </div>
                <div class="content">
-                   <div class="card_title">SlotoKing</div>
-                   <div class="card_subtitle">Welcome bonus</div>
-                   <div class="card_value">125 000 ₽</div>
-                   <div class="card_desc">Единоразово при регистрации</div>
-                   <button class="button-cta">Получить бонус</button>
-               </div>
-           </div>
-           <div class="card">
-               <div class="icon">
-                   <img src="/img/60c9b6fe8df1a.png" width="100" height="100"  />
-               </div>
-               <div class="content">
-                   <div class="card_title">Leo Vegas</div>
-                   <div class="card_subtitle">Бонус "WEEKEND"</div>
-                   <div class="card_value">50% + UP TO 30FS</div>
-                   <div class="card_desc">Единоразово при регистрации</div>
-                   <button class="button-cta">Получить бонус</button>
-               </div>
-           </div>
-           <div class="card">
-               <div class="icon">
-                   <img src="/img/60c9dcf13bca3.png" width="100" height="100"  />
-               </div>
-               <div class="content">
-                   <div class="card_title">Super Boss</div>
-                   <div class="card_subtitle">Бонус "WEEKEND"</div>
-                   <div class="card_value">50% + UP TO 30FS</div>
-                   <div class="card_desc">Единоразово при регистрации</div>
-                   <button class="button-cta">Получить бонус</button>
+                   <div class="card_title">{{item.value_1}}</div>
+                   <div class="card_subtitle">{{item.value_2}}</div>
+                   <div class="card_value">{{item.value_3}}</div>
+                   <div class="card_desc">{{item.value_4}}</div>
+                   <a :href="item.value_5" class="button-cta">{{getBonus}}</a>
                </div>
            </div>
        </div>
@@ -42,21 +20,24 @@
 </template>
 
 <script>
+import TRANSLATE from '~/helpers/translate'
+import config from '~/config'
     export default {
         name: "app_banner",
         data(){
             return {
-                value: []
+                value: [],
+                getBonus: TRANSLATE.GET_BONUS[config.LANG]
             }
         },
 		computed:{
-            banner() {
-				const options = this.$store.getters['options/getOptions']
-                if(options) {
-					this.value = options.banner_card
-                }
-                return this.value
-
+            bonuses() {
+				const settings = this.$store.getters['settings/getSettings']
+                if(settings) {
+                    const menu = settings.filter(item => item.key_id === 'bonus_main_page')
+                    this.value = menu.length ? menu[0].value : []
+				}
+				return this.value
 			}
 		}
     }
@@ -193,6 +174,7 @@
         font-family: var(--font);
         font-size: 18px;
         border:none;
+        text-decoration: none;
     }
     .card:nth-child(1) .button-cta{
         background: linear-gradient(to top, #ff2ae0, #645bf6);
