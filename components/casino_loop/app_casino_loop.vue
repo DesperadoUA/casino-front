@@ -9,13 +9,15 @@
               <p>Клиент абсолютно ничем не рискует - надежность и безопасность гарантируется специальными аудиторскими компаниями и подтверждается лицензиями, представленными на сайтах виртуальных порталов. На результативность сессии влияет выбор виртуального казино: геймеру следует определиться с онлайн ресурсом, обеспечивающим полноценное и приятное времяпровождение.</p>
           </div>
           <div class="casino_table_row">
-            <article class="casino_table_item">
+            <article class="casino_table_item"
+                v-for="(item, index) in posts" :key="index"
+            >
                <div class="card">
                     <div class="face face1">
                         <figure>
-                            <img src="/img/612f253fcdbf5.jpeg">
+                            <img :src="item.thumbnail" width="244" height="171">
                             <figcaption>
-                                <a href="#">Обзор казино 777 Original</a>
+                                <NuxtLink :to="item.permalink">Обзор казино {{item.title}}</NuxtLink>
                             </figcaption>
                         </figure>
                         <div class="casino_table_item_box">
@@ -23,7 +25,7 @@
                                 Приветственный бонус:
                             </div>
                             <div class="casino_table_item_box_value">
-                                24 000 UAH
+                                {{item.welcome_bonus}}
                             </div>
                         </div>
                         <div class="casino_table_item_box white_border_top">
@@ -31,17 +33,17 @@
                                 Фриспины:
                             </div>
                             <div class="casino_table_item_box_value">
-                                x30
+                                {{item.freespins}}
                             </div>
                         </div>
                         <div class="casino_table_item_rating_wrapper">
                             <div class="item_rating">
                                 <div class="item_rating_wrapper">
-                                    <div class="item_progress" style="width:95%"></div>
+                                    <div class="item_progress" :style="`width:${item.rating}%`"></div>
                                 </div>
                             </div>
                             <div class="item_rating_value">
-                                95/100
+                                {{item.rating}}/100
                             </div>
                         </div>
                     </div>
@@ -58,268 +60,37 @@
                                 <tbody>
                                     <tr>
                                       <td>Год основания</td>
-                                      <td>2019</td>
+                                      <td>{{item.year}}</td>
                                     </tr>
                                     <tr>
                                       <td>Мин. депозит</td>
-                                      <td>100 грн / 200 руб / 5$ </td>
+                                      <td>{{item.min_deposit}}</td>
                                     </tr>
                                     <tr>
                                       <td>Мин. вывод</td>
-                                      <td>100 грн / 200 руб / 5$ </td>
+                                      <td>{{item.min_payments}}</td>
                                     </tr>
                                     <tr>
                                       <td>Лицензия</td>
-                                      <td>Кюрасао </td>
+                                      <td>{{item.license}}</td>
                                     </tr>
                                     <tr>
                                       <td>Срок вывода</td>
-                                      <td>до 24 часов</td>
+                                      <td>{{item.withdrawal}}</td>
                                     </tr>
                                     <tr>
                                       <td>Кол. игр</td>
-                                      <td>1570</td>
+                                      <td>{{item.number_games}}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <footer class="casino_footer">
                             <button class="cta_btn shadow">Перейти</button>
-                            <a class="cta_btn shadow">Обзор</a>
+                            <NuxtLink :to="item.permalink" class="cta_btn shadow">Обзор</NuxtLink>
                         </footer>
                     </div>
                </div>
-            </article>
-            <article class="casino_table_item">
-               <div class="card">
-                    <div class="face face1">
-                        <img src="/img/60b61ea0afbb6.jpeg">
-                        <a href="#">Обзор казино Joker</a>
-                        <div class="casino_table_item_box">
-                            <div class="casino_table_item_box_title">
-                                Приветственный бонус:
-                            </div>
-                            <div class="casino_table_item_box_value">
-                                24 000 UAH
-                            </div>
-                        </div>
-                        <div class="casino_table_item_box white_border_top">
-                            <div class="casino_table_item_box_title">
-                                Фриспины:
-                            </div>
-                            <div class="casino_table_item_box_value">
-                                x30
-                            </div>
-                        </div>
-                        <div class="casino_table_item_rating_wrapper">
-                            <div class="item_rating">
-                                <div class="item_rating_wrapper">
-                                    <div class="item_progress" style="width:75%"></div>
-                                </div>
-                            </div>
-                            <div class="item_rating_value">
-                                75/100
-                            </div>
-                        </div>
-                    </div>
-                    <div class="face face2">
-                        <div class="content">
-                            <table>
-                                <caption>Характеристики игрового зала</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">значение</th>
-                                        <th scope="col">описание</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                      <td>Год основания</td>
-                                      <td>2019</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Мин. депозит</td>
-                                      <td>100 грн / 200 руб / 5$ </td>
-                                    </tr>
-                                    <tr>
-                                      <td>Мин. вывод</td>
-                                      <td>100 грн / 200 руб / 5$ </td>
-                                    </tr>
-                                    <tr>
-                                      <td>Лицензия</td>
-                                      <td>Кюрасао </td>
-                                    </tr>
-                                    <tr>
-                                      <td>Срок вывода</td>
-                                      <td>до 24 часов</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Кол. игр</td>
-                                      <td>1570</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <footer class="casino_footer">
-                            <button class="cta_btn shadow">Перейти</button>
-                            <a class="cta_btn shadow">Обзор</a>
-                        </footer>
-                    </div>
-               </div>
-            </article>
-            <article class="casino_table_item">
-                <div class="card">
-                    <div class="face face1">
-                        <img src="/img/60b73fa2c8d6f.jpeg">
-                         <a href="#">Обзор казино Cosmolot</a>
-                         <div class="casino_table_item_box">
-                            <div class="casino_table_item_box_title">
-                                Приветственный бонус:
-                            </div>
-                            <div class="casino_table_item_box_value">
-                                24 000 UAH
-                            </div>
-                        </div>
-                        <div class="casino_table_item_box white_border_top">
-                            <div class="casino_table_item_box_title">
-                                Фриспины:
-                            </div>
-                            <div class="casino_table_item_box_value">
-                                x30
-                            </div>
-                        </div>
-                        <div class="casino_table_item_rating_wrapper">
-                            <div class="item_rating">
-                                <div class="item_rating_wrapper">
-                                    <div class="item_progress" style="width:95%"></div>
-                                </div>
-                            </div>
-                            <div class="item_rating_value">
-                                95/100
-                            </div>
-                        </div>
-                    </div>
-                    <div class="face face2">
-                        <div class="content">
-                            <table>
-                                <caption>Характеристики игрового зала</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">значение</th>
-                                        <th scope="col">описание</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                      <td>Год основания</td>
-                                      <td>2019</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Мин. депозит</td>
-                                      <td>100 грн / 200 руб / 5$ </td>
-                                    </tr>
-                                    <tr>
-                                      <td>Мин. вывод</td>
-                                      <td>100 грн / 200 руб / 5$ </td>
-                                    </tr>
-                                    <tr>
-                                      <td>Лицензия</td>
-                                      <td>Кюрасао </td>
-                                    </tr>
-                                    <tr>
-                                      <td>Срок вывода</td>
-                                      <td>до 24 часов</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Кол. игр</td>
-                                      <td>1570</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <footer class="casino_footer">
-                            <button class="cta_btn shadow">Перейти</button>
-                            <a class="cta_btn shadow">Обзор</a>
-                        </footer>
-                    </div>
-                </div>
-            </article>
-            <article class="casino_table_item">
-                <div class="card">
-                    <div class="face face1">
-                        <img src="/img/613b616584fca.jpeg">
-                        <a href="#">Обзор казино ReelEmperor</a>
-                        <div class="casino_table_item_box">
-                            <div class="casino_table_item_box_title">
-                                Приветственный бонус:
-                            </div>
-                            <div class="casino_table_item_box_value">
-                                24 000 UAH
-                            </div>
-                        </div>
-                        <div class="casino_table_item_box white_border_top">
-                            <div class="casino_table_item_box_title">
-                                Фриспины:
-                            </div>
-                            <div class="casino_table_item_box_value">
-                                x30
-                            </div>
-                        </div>
-                        <div class="casino_table_item_rating_wrapper">
-                            <div class="item_rating">
-                                <div class="item_rating_wrapper">
-                                    <div class="item_progress" style="width:95%"></div>
-                                </div>
-                            </div>
-                            <div class="item_rating_value">
-                                95/100
-                            </div>
-                        </div>
-                    </div>
-                    <div class="face face2">
-                        <div class="content">
-                            <table>
-                                <caption>Характеристики игрового зала</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">значение</th>
-                                        <th scope="col">описание</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                      <td>Год основания</td>
-                                      <td>2019</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Мин. депозит</td>
-                                      <td>100 грн / 200 руб / 5$ </td>
-                                    </tr>
-                                    <tr>
-                                      <td>Мин. вывод</td>
-                                      <td>100 грн / 200 руб / 5$ </td>
-                                    </tr>
-                                    <tr>
-                                      <td>Лицензия</td>
-                                      <td>Кюрасао </td>
-                                    </tr>
-                                    <tr>
-                                      <td>Срок вывода</td>
-                                      <td>до 24 часов</td>
-                                    </tr>
-                                    <tr>
-                                      <td>Кол. игр</td>
-                                      <td>1570</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <footer class="casino_footer">
-                            <button class="cta_btn shadow">Перейти</button>
-                            <a class="cta_btn shadow">Обзор</a>
-                        </footer>
-                    </div>
-                </div>
             </article>
           </div>
       </div>
@@ -336,7 +107,7 @@
             },
             title: {
         		type: String,
-                default: undefined
+                default: ''
             },
             bg: {
         		type: String,
@@ -606,6 +377,7 @@
     background: var(--light-black);
     cursor: pointer;
     text-transform: uppercase;
+    text-decoration: none;
 }
 .casino_footer {
     padding: 5px 15px;

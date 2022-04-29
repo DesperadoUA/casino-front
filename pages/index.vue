@@ -1,9 +1,9 @@
 <template>
   <main>
       <app_banner />
-      <app_casino_loop :posts="data.body.top_casino" title="Онлайн казино Украины" bg="bg-strong-black"/>
+      <app_casino_loop :posts="data.body.casinos" title="Онлайн казино Украины" bg="bg-strong-black"/>
       <!--<app_top_bonuses :value="data.body.bonuses" title="Топ бонусы" v-if="data.body.bonuses.length !== 0" /> -->
-      <app_game_loop />
+      <app_game_loop  :posts="[]"/>
       <app_content :value="data.body.content" bg="bg-strong-blue"/>
   </main>
 </template>

@@ -48,6 +48,7 @@ import config from '~/config'
         background: #3c2846;
         padding-top: 40px;
         padding-bottom: 40px;
+        min-height: 510px;
     }
     .banner_container {
         display: flex;
@@ -68,6 +69,11 @@ import config from '~/config'
         display: flex;
         justify-content: center;
         align-items: flex-start;
+        -webkit-animation: fadein 1.5s; 
+        -moz-animation: fadein 1.5s; 
+        -ms-animation: fadein 1.5s; 
+        -o-animation: fadein 1.5s;
+        animation: fadein 1.5s;
     }
     .card::before {
         content: '';
@@ -184,5 +190,27 @@ import config from '~/config'
     }
     .card:nth-child(3) .button-cta{
         background: linear-gradient(to top, #24ff72, #9a4eff);
+    }
+    @keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+    }
+
+    /* Firefox < 16 */
+    @-moz-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    /* Safari, Chrome and Opera > 12.1 */
+    @-webkit-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    /* Internet Explorer */
+    @-ms-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
     }
 </style>
