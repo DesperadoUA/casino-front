@@ -1,9 +1,18 @@
 <template>
   <main>
       <app_banner />
-      <app_casino_loop :posts="data.body.casinos" title="Онлайн казино Украины" bg="bg-strong-black"/>
+      <app_casino_loop 
+           :posts="data.body.casinos" 
+           :title="onlinecasinoUkraine" 
+           :text="textCasino"
+           bg="bg-strong-black"
+      />
       <!--<app_top_bonuses :value="data.body.bonuses" title="Топ бонусы" v-if="data.body.bonuses.length !== 0" /> -->
-      <app_game_loop  :posts="[]"/>
+      <app_game_loop  
+           :posts="[]"
+           title='Популяпные игровые автоматы'
+           :text='textGame'
+      />
       <app_content :value="data.body.content" bg="bg-strong-blue"/>
   </main>
 </template>
@@ -16,13 +25,35 @@
     import app_banner from '~/components/banner/app_banner_main'
     import app_blog_card from '~/components/blog_card/app_blog_card'
     import app_top_bonuses from '~/components/top-bonuses/app_top_bonuses'
-    import config from '~/config/index'
+    import config from '~/config'
+    import TRANSLATE from '~/helpers/translate'
 export default {
     name: "main-page",
     data: () => {
         return {
+            onlinecasinoUkraine: TRANSLATE.ONLINE_CASINO_UKRAINE[config.LANG],
+            casinoText: '',
+            gameText: ''
         }
     },
+    computed:{
+		textCasino() {
+			const settings = this.$store.getters['settings/getSettings']
+			if(settings) {
+                const text = settings.filter(item => item.key_id === 'main_page_casino_text')
+                this.casinoText = text.length ? text[0].value : ''
+			}
+			return this.casinoText
+		},
+        textGame() {
+			const settings = this.$store.getters['settings/getSettings']
+			if(settings) {
+                const text = settings.filter(item => item.key_id === 'main_page_game_text')
+                this.gameText = text.length ? text[0].value : ''
+			}
+			return this.gameText
+		},
+	},
     components: {app_content, app_casino_loop, app_banner, app_blog_card, app_top_bonuses, app_game_loop},
     async asyncData({store, route}) {
         const request = new DAL_Builder()
