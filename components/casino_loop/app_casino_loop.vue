@@ -17,12 +17,12 @@
                         <figure>
                             <img :src="item.thumbnail" width="244" height="171">
                             <figcaption>
-                                <NuxtLink :to="item.permalink">Обзор казино {{item.title}}</NuxtLink>
+                                <NuxtLink :to="item.permalink">{{casinoReview}} {{item.title}}</NuxtLink>
                             </figcaption>
                         </figure>
                         <div class="casino_table_item_box">
                             <div class="casino_table_item_box_title">
-                                Приветственный бонус:
+                                {{welcomeBonus}}:
                             </div>
                             <div class="casino_table_item_box_value">
                                 {{item.welcome_bonus}}
@@ -30,7 +30,7 @@
                         </div>
                         <div class="casino_table_item_box white_border_top">
                             <div class="casino_table_item_box_title">
-                                Фриспины:
+                                {{freespins}}:
                             </div>
                             <div class="casino_table_item_box_value">
                                 {{item.freespins}}
@@ -50,44 +50,44 @@
                     <div class="face face2">
                         <div class="content">
                             <table>
-                                <caption>Характеристики игрового зала</caption>
+                                <caption>{{characteristicsGamingHall}}</caption>
                                 <thead>
                                     <tr>
-                                        <th scope="col">значение</th>
-                                        <th scope="col">описание</th>
+                                        <th scope="col">{{meaning}}</th>
+                                        <th scope="col">{{description}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                      <td>Год основания</td>
+                                      <td>{{yearFoundation}}</td>
                                       <td>{{item.year}}</td>
                                     </tr>
                                     <tr>
-                                      <td>Мин. депозит</td>
+                                      <td>{{minDeposit}}</td>
                                       <td>{{item.min_deposit}}</td>
                                     </tr>
                                     <tr>
-                                      <td>Мин. вывод</td>
+                                      <td>{{minPay}}</td>
                                       <td>{{item.min_payments}}</td>
                                     </tr>
                                     <tr>
-                                      <td>Лицензия</td>
+                                      <td>{{license}}</td>
                                       <td>{{item.license}}</td>
                                     </tr>
                                     <tr>
-                                      <td>Срок вывода</td>
+                                      <td>{{withdrawalPeriod}}</td>
                                       <td>{{item.withdrawal}}</td>
                                     </tr>
                                     <tr>
-                                      <td>Кол. игр</td>
+                                      <td>{{numberGames}}</td>
                                       <td>{{item.number_games}}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <footer class="casino_footer">
-                            <button class="cta_btn shadow">Перейти</button>
-                            <NuxtLink :to="item.permalink" class="cta_btn shadow">Обзор</NuxtLink>
+                            <button class="cta_btn shadow" @click="refActivate(item)">{{goTo}}</button>
+                            <NuxtLink :to="item.permalink" class="cta_btn shadow">{{review}}</NuxtLink>
                         </footer>
                     </div>
                </div>
@@ -98,6 +98,9 @@
 </template>
 
 <script>
+import config from '~/config'
+import TRANSLATE from '~/helpers/translate'
+import Helper from '~/helpers'
     export default {
         name: "app_casino_loop",
         props: {
@@ -116,7 +119,25 @@
         },
         data(){
             return {
-                
+                casinoReview: TRANSLATE.CASINO_REVIEW[config.LANG],
+                welcomeBonus: TRANSLATE.WELCOME_BONUS[config.LANG],
+                freespins: TRANSLATE.FREESPINS[config.LANG],
+                characteristicsGamingHall: TRANSLATE.CHARACTERISTICS_GAMING_HALL[config.LANG],
+                meaning: TRANSLATE.MEANING[config.LANG],
+                description: TRANSLATE.DESCRIPTION[config.LANG],
+                yearFoundation: TRANSLATE.YEAR_FOUNDATION[config.LANG],
+                minDeposit: TRANSLATE.MIN_DEPOSIT[config.LANG],
+                minPay: TRANSLATE.MIN_PAY[config.LANG],
+                license: TRANSLATE.LICENSE[config.LANG],
+                withdrawalPeriod: TRANSLATE.WITHDRAWAL_PERIOD[config.LANG],
+                numberGames: TRANSLATE.NUMBER_GAMES[config.LANG],
+                goTo: TRANSLATE.GO_TO[config.LANG],
+                review: TRANSLATE.REVIEW[config.LANG]
+            }
+        },
+        methods: {
+            refActivate(item) {
+                Helper.refActivate(item)
             }
         },
         
