@@ -4,291 +4,51 @@
           <h2 class="game_table_title" v-if="title!==''">{{title}}</h2>
           <div class="content" v-html="text"></div>
           <div class="game_table_row">
-              <article class="card">
+              <article class="card" v-for="(item, index) in posts" :key="index">
                  <div class="imgBx">
                     <figure class="imgBx_wrapper">
-                        <img src='https://api.onlinecasino.ua/public/downloads/618405a1e5e78.png' />
+                        <img :src='item.thumbnail' />
                     </figure>
                     <div class="game_table_item_rating_wrapper">
                         <div class="item_rating">
                             <div class="item_rating_wrapper">
-                                <div class="item_progress" style="width:95%"></div>
+                                <div class="item_progress" :style="`width:${item.rating}%`"></div>
                             </div>
                         </div>
-                        <div class="item_rating_value">95/100</div>
+                        <div class="item_rating_value">{{item.rating}}/100</div>
                     </div>
                  </div>
                  <div class="card_content">
-                    <a href="#" class="card_title">Обзор Book of Ra</a>
+                    <a href="#" class="card_title">{{review}} {{item.title}}</a>
                     <table>
-                        <caption>Характеристики Book of Ra</caption>
+                        <caption>{{characteristics}} {{item.title}}</caption>
                             <thead>
                                 <tr>
-                                    <th scope="col">значение</th>
-                                    <th scope="col">описание</th>
+                                    <th scope="col">{{meaning}}</th>
+                                    <th scope="col">{{description}}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                      <td>Производитель</td>
-                                      <td>NetGame</td>
+                                      <td>{{vendor}}</td>
+                                      <td>{{item.vendor}}</td>
                                 </tr>
                                 <tr>
-                                      <td>Мин. ставка</td>
-                                      <td>0.01</td>
+                                      <td>{{min_rate}}</td>
+                                      <td>{{item.min_rate}}</td>
                                 </tr>
                                 <tr>
-                                      <td>Rtp</td>
-                                      <td>93.8%</td>
+                                      <td>{{rtp}}</td>
+                                      <td>{{item.rtp}}</td>
                                 </tr>
                                 <tr>
-                                      <td>Волатильность</td>
-                                      <td>medium</td>
+                                      <td>{{volatility}}</td>
+                                      <td>{{item.volatility}}</td>
                                 </tr>
                             </tbody>
                     </table>
                     <footer class="game_table_footer">
-                        <a href="#" class="card-permalink shadow">Подробнее</a>
-                    </footer>
-                 </div>
-              </article>
-              <article class="card">
-                 <div class="imgBx">
-                    <figure class="imgBx_wrapper">
-                        <img src='https://api.onlinecasino.ua/public/downloads/613a1054da203.png' />
-                    </figure>
-                    <div class="game_table_item_rating_wrapper">
-                        <div class="item_rating">
-                            <div class="item_rating_wrapper">
-                                <div class="item_progress" style="width:85%"></div>
-                            </div>
-                        </div>
-                        <div class="item_rating_value">85/100</div>
-                    </div>
-                 </div>
-                 <div class="card_content">
-                    <a href="#" class="card_title">Обзор Book of Ra</a>
-                    <table>
-                        <caption>Характеристики Book of Ra</caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col">значение</th>
-                                    <th scope="col">описание</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                      <td>Производитель</td>
-                                      <td>NetGame</td>
-                                </tr>
-                                <tr>
-                                      <td>Мин. ставка</td>
-                                      <td>0.01</td>
-                                </tr>
-                                <tr>
-                                      <td>Rtp</td>
-                                      <td>93.8%</td>
-                                </tr>
-                                <tr>
-                                      <td>Волатильность</td>
-                                      <td>medium</td>
-                                </tr>
-                            </tbody>
-                    </table>
-                    <footer class="game_table_footer">
-                        <a href="#" class="card-permalink shadow">Подробнее</a>
-                    </footer>
-                 </div>
-              </article>
-              <article class="card">
-                 <div class="imgBx">
-                    <figure class="imgBx_wrapper">
-                        <img src='https://api.onlinecasino.ua/public/downloads/6137898186dd2.png' />
-                    </figure>
-                    <div class="game_table_item_rating_wrapper">
-                        <div class="item_rating">
-                            <div class="item_rating_wrapper">
-                                <div class="item_progress" style="width:85%"></div>
-                            </div>
-                        </div>
-                        <div class="item_rating_value">85/100</div>
-                    </div>
-                 </div>
-                 <div class="card_content">
-                     <a href="#" class="card_title">Обзор Book of Ra</a>
-                    <table>
-                        <caption>Характеристики Book of Ra</caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col">значение</th>
-                                    <th scope="col">описание</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                      <td>Производитель</td>
-                                      <td>NetGame</td>
-                                </tr>
-                                <tr>
-                                      <td>Мин. ставка</td>
-                                      <td>0.01</td>
-                                </tr>
-                                <tr>
-                                      <td>Rtp</td>
-                                      <td>93.8%</td>
-                                </tr>
-                                <tr>
-                                      <td>Волатильность</td>
-                                      <td>medium</td>
-                                </tr>
-                            </tbody>
-                    </table>
-                    <footer class="game_table_footer">
-                        <a href="#" class="card-permalink shadow">Подробнее</a>
-                    </footer>
-                 </div>
-              </article>
-              <article class="card">
-                 <div class="imgBx">
-                    <figure class="imgBx_wrapper">
-                      <img src='https://api.onlinecasino.ua/public/downloads/61390589eea50.png' />
-                    </figure>
-                    <div class="game_table_item_rating_wrapper">
-                        <div class="item_rating">
-                            <div class="item_rating_wrapper">
-                                <div class="item_progress" style="width:85%"></div>
-                            </div>
-                        </div>
-                        <div class="item_rating_value">85/100</div>
-                    </div>
-                 </div>
-                 <div class="card_content">
-                     <a href="#" class="card_title">Обзор Book of Ra</a>
-                    <table>
-                        <caption>Характеристики Book of Ra</caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col">значение</th>
-                                    <th scope="col">описание</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                      <td>Производитель</td>
-                                      <td>NetGame</td>
-                                </tr>
-                                <tr>
-                                      <td>Мин. ставка</td>
-                                      <td>0.01</td>
-                                </tr>
-                                <tr>
-                                      <td>Rtp</td>
-                                      <td>93.8%</td>
-                                </tr>
-                                <tr>
-                                      <td>Волатильность</td>
-                                      <td>medium</td>
-                                </tr>
-                            </tbody>
-                    </table>
-                    <footer class="game_table_footer">
-                        <a href="#" class="card-permalink shadow">Подробнее</a>
-                    </footer>
-                 </div>
-              </article>
-              <article class="card">
-                 <div class="imgBx">
-                    <figure class="imgBx_wrapper">
-                      <img src='https://api.onlinecasino.ua/public/downloads/61390589eea50.png' />
-                    </figure>
-                    <div class="game_table_item_rating_wrapper">
-                        <div class="item_rating">
-                            <div class="item_rating_wrapper">
-                                <div class="item_progress" style="width:85%"></div>
-                            </div>
-                        </div>
-                        <div class="item_rating_value">85/100</div>
-                    </div>
-                 </div>
-                 <div class="card_content">
-                     <a href="#" class="card_title">Обзор Book of Ra</a>
-                    <table>
-                        <caption>Характеристики Book of Ra</caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col">значение</th>
-                                    <th scope="col">описание</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                      <td>Производитель</td>
-                                      <td>NetGame</td>
-                                </tr>
-                                <tr>
-                                      <td>Мин. ставка</td>
-                                      <td>0.01</td>
-                                </tr>
-                                <tr>
-                                      <td>Rtp</td>
-                                      <td>93.8%</td>
-                                </tr>
-                                <tr>
-                                      <td>Волатильность</td>
-                                      <td>medium</td>
-                                </tr>
-                            </tbody>
-                    </table>
-                    <footer class="game_table_footer">
-                        <a href="#" class="card-permalink shadow">Подробнее</a>
-                    </footer>
-                 </div>
-              </article>
-              <article class="card">
-                 <div class="imgBx">
-                    <figure class="imgBx_wrapper">
-                      <img src='https://api.onlinecasino.ua/public/downloads/61390589eea50.png' />
-                    </figure>
-                    <div class="game_table_item_rating_wrapper">
-                        <div class="item_rating">
-                            <div class="item_rating_wrapper">
-                                <div class="item_progress" style="width:85%"></div>
-                            </div>
-                        </div>
-                        <div class="item_rating_value">85/100</div>
-                    </div>
-                 </div>
-                 <div class="card_content">
-                     <a href="#" class="card_title">Обзор Book of Ra</a>
-                    <table>
-                        <caption>Характеристики Book of Ra</caption>
-                            <thead>
-                                <tr>
-                                    <th scope="col">значение</th>
-                                    <th scope="col">описание</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                      <td>Производитель</td>
-                                      <td>NetGame</td>
-                                </tr>
-                                <tr>
-                                      <td>Мин. ставка</td>
-                                      <td>0.01</td>
-                                </tr>
-                                <tr>
-                                      <td>Rtp</td>
-                                      <td>93.8%</td>
-                                </tr>
-                                <tr>
-                                      <td>Волатильность</td>
-                                      <td>medium</td>
-                                </tr>
-                            </tbody>
-                    </table>
-                    <footer class="game_table_footer">
-                        <a href="#" class="card-permalink shadow">Подробнее</a>
+                        <NuxtLink :to="item.permalink" class="card-permalink shadow">{{more}}</NuxtLink>
                     </footer>
                  </div>
               </article>
@@ -298,6 +58,8 @@
 </template>
 
 <script>
+import config from '~/config'
+import TRANSLATE from '~/helpers/translate'
     export default {
         name: "app_game_loop",
         props: {
@@ -320,7 +82,15 @@
         },
         data(){
             return {
-                
+                review: TRANSLATE.REVIEW[config.LANG],
+                characteristics: TRANSLATE.CHARACTERISTICS[config.LANG],
+                meaning: TRANSLATE.MEANING[config.LANG],
+                description: TRANSLATE.DESCRIPTION[config.LANG],
+                vendor: TRANSLATE.VENDOR[config.LANG],
+                min_rate: TRANSLATE.MIN_RATE[config.LANG],
+                rtp: TRANSLATE.RTP[config.LANG],
+                volatility: TRANSLATE.VOLATILITY[config.LANG],
+                more: TRANSLATE.MORE[config.LANG]
             }
         },
         

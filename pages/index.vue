@@ -2,18 +2,21 @@
   <main>
       <app_banner />
       <app_casino_loop 
-           :posts="data.body.casinos" 
-           :title="onlinecasinoUkraine" 
-           :text="textCasino"
-           bg="bg-strong-black"
+           :posts='data.body.casinos' 
+           :title='onlinecasinoUkraine' 
+           :text='textCasino'
+           bg='bg-strong-black'
       />
       <!--<app_top_bonuses :value="data.body.bonuses" title="Топ бонусы" v-if="data.body.bonuses.length !== 0" /> -->
       <app_game_loop  
-           :posts="[]"
-           title='Популяпные игровые автоматы'
+           :posts='data.body.games'
+           :title='popularSlots'
            :text='textGame'
       />
-      <app_content :value="data.body.content" bg="bg-strong-blue"/>
+      <app_content 
+           :value='data.body.content' 
+           bg='bg-strong-blue'
+       />
   </main>
 </template>
 
@@ -32,6 +35,7 @@ export default {
     data: () => {
         return {
             onlinecasinoUkraine: TRANSLATE.ONLINE_CASINO_UKRAINE[config.LANG],
+            popularSlots: TRANSLATE.POPULAR_SLOTS[config.LANG],
             casinoText: '',
             gameText: ''
         }
