@@ -150,12 +150,14 @@ import TRANSLATE from '~/helpers/translate'
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
     }
-    .game_table_row .card:hover .imgBx {
-        width: 180px;
-        height: 105px;
-        left:-75px;
-        top: calc(50% - 60px);
-        transition: 0.5s ease-in-out;
+    @media (min-width: 767px) {
+        .game_table_row .card:hover .imgBx {
+                width: 180px;
+                height: 105px;
+                left:-75px;
+                top: calc(50% - 60px);
+                transition: 0.5s ease-in-out;
+            }
     }
     .card_content {
         border-radius: 5px;
@@ -308,6 +310,23 @@ import TRANSLATE from '~/helpers/translate'
     @keyframes animate {
         from {
             width: 0;
+        }
+    }
+    @media (min-width: 320px) and (max-width: 767px) {
+        .game_table_row .card {
+            width: 100%;
+            height: auto;
+        }
+        .game_table_row .imgBx {
+            position: relative;
+            height: auto;
+        }
+        .card_content {
+            padding-left: 15px;
+        }
+        .card_title {
+            display: block;
+            text-align: center;
         }
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <footer v-if="changeSettings !== null">
+  <footer class="footer" v-if="changeSettings !== null">
     <nav class="footer_menu">
       <div class="container">
         <ul>
@@ -95,19 +95,19 @@
   text-decoration: none;
   font-family: var(--font);
 }
-    footer {
+.footer {
       padding-bottom: 25px;
       color: var(--white);
       background: var(--strong-blue);
     }
-    .footer_text {
+.footer_text {
       font-family: var(--font);
       font-style: normal;
       font-weight: normal;
       font-size: 15px;
       color: var(--white);
     }
-    .footer_container {
+.footer_container {
       padding-top: 25px;
       position: relative;
     }

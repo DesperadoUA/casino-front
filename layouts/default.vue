@@ -43,11 +43,7 @@
     --orange-gradient: linear-gradient(#ff3c00, #ff7300af);
     --font: 'Podkova';
     --font-semi: 'Open Sans Semi';
-    --banner: url('/img/main_bg.webp');
-    --mob_banner: url('/img/bg-mob.webp');
-    --star_full: url('/img/stars_rate_1.png');
-    --star_empty: url('/img/stars_rate_2.png');
-    --faq_close: url('/img/faq_close.png');
+    --theme-cr-2: #ff3c00;
   }
   *{
     margin: 0px;

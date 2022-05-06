@@ -406,5 +406,16 @@ import Helper from '~/helpers'
     box-sizing: border-box;
     background: transparent;
 }
-
+@media (min-width: 320px) and (max-width: 767px) {
+    .casino_table_item {
+        width: 100%;
+        margin-left: 20px;
+    }
+    .casino_table_item:nth-child(3n+1) {
+    justify-content: center;
+    }
+    .casino_table_item:nth-child(3n+3) {
+        justify-content: center;
+    }
+}
 </style>

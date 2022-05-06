@@ -7,7 +7,11 @@
            :text='textCasino'
            bg='bg-strong-black'
       />
-      <!--<app_top_bonuses :value="data.body.bonuses" title="Топ бонусы" v-if="data.body.bonuses.length !== 0" /> -->
+      <app_bonus_loop 
+           :posts='data.body.bonuses' 
+           :title='topBonuses'
+           :text='textBonus'
+      />
       <app_game_loop  
            :posts='data.body.games'
            :title='popularSlots'
@@ -16,6 +20,10 @@
       <app_content 
            :value='data.body.content' 
            bg='bg-strong-blue'
+       />
+       <app_faq 
+           :value='data.body.faq'
+           title='Faq'
        />
   </main>
 </template>
@@ -27,7 +35,8 @@
     import app_game_loop from '~/components/game_loop/app_game_loop'
     import app_banner from '~/components/banner/app_banner_main'
     import app_blog_card from '~/components/blog_card/app_blog_card'
-    import app_top_bonuses from '~/components/top-bonuses/app_top_bonuses'
+    import app_bonus_loop from '~/components/bonus_loop/app_bonus_loop'
+    import app_faq from '~/components/faq/app_faq'
     import config from '~/config'
     import TRANSLATE from '~/helpers/translate'
 export default {
@@ -36,8 +45,10 @@ export default {
         return {
             onlinecasinoUkraine: TRANSLATE.ONLINE_CASINO_UKRAINE[config.LANG],
             popularSlots: TRANSLATE.POPULAR_SLOTS[config.LANG],
+            topBonuses: TRANSLATE.TOP_BONUSES[config.LANG],
             casinoText: '',
-            gameText: ''
+            gameText: '',
+            bonusText: ''
         }
     },
     computed:{
@@ -57,8 +68,16 @@ export default {
 			}
 			return this.gameText
 		},
+        textBonus() {
+			const settings = this.$store.getters['settings/getSettings']
+			if(settings) {
+                const text = settings.filter(item => item.key_id === 'main_page_bonus_text')
+                this.bonusText = text.length ? text[0].value : ''
+			}
+			return this.bonusText
+		},
 	},
-    components: {app_content, app_casino_loop, app_banner, app_blog_card, app_top_bonuses, app_game_loop},
+    components: {app_content, app_casino_loop, app_banner, app_blog_card, app_game_loop, app_bonus_loop, app_faq},
     async asyncData({store, route}) {
         const request = new DAL_Builder()
         const response = await request.postType('pages')
