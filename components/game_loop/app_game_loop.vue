@@ -1,8 +1,8 @@
 <template>
   <section class="game_table_wrapper">
       <div class="container game_table_container">
-          <h2 class="game_table_title" v-if="title!==''">{{title}}</h2>
-          <div class="content" v-html="text"></div>
+          <app_sub_ttl :title="title" />
+          <app_sub_content :text="text" />
           <div class="game_table_row">
               <article class="card" v-for="(item, index) in posts" :key="index">
                  <div class="imgBx">
@@ -60,6 +60,8 @@
 <script>
 import config from '~/config'
 import TRANSLATE from '~/helpers/translate'
+import app_sub_ttl from '~/components/sub_ttl/app_sub_ttl'
+import app_sub_content from '~/components/sub_content/app_sub_content'
     export default {
         name: "app_game_loop",
         props: {
@@ -80,6 +82,7 @@ import TRANSLATE from '~/helpers/translate'
                 default: ''
             }
         },
+        components: {app_sub_ttl, app_sub_content},
         data(){
             return {
                 review: TRANSLATE.REVIEW[config.LANG],
@@ -103,12 +106,6 @@ import TRANSLATE from '~/helpers/translate'
         padding-bottom: 30px;
         background: var(--middle-black);
         color: var(--light);
-    }
-    .game_table_title {
-        font-family: var(--font);
-        color: var(--white);
-        font-size: 28px;
-        margin-bottom: 10px;
     }
     .game_table_row {
         position: relative;

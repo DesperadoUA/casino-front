@@ -1,8 +1,8 @@
 <template>
   <section class="casino_table_wrapper">
       <div class="container casino_table_container">
-          <h2 class="casino_table_title" v-if="title !== ''">{{title}}</h2>
-          <div class="content" v-html="text" v-if="text!==''"></div>
+          <app_sub_ttl :title="title" />
+          <app_sub_content :text="text" />
           <div class="casino_table_row">
             <article class="casino_table_item"
                 v-for="(item, index) in posts" :key="index"
@@ -96,6 +96,8 @@
 import config from '~/config'
 import TRANSLATE from '~/helpers/translate'
 import Helper from '~/helpers'
+import app_sub_ttl from '~/components/sub_ttl/app_sub_ttl'
+import app_sub_content from '~/components/sub_content/app_sub_content'
     export default {
         name: "app_casino_loop",
         props: {
@@ -116,6 +118,7 @@ import Helper from '~/helpers'
                 default: ''
             }
         },
+        components: {app_sub_ttl, app_sub_content},
         data(){
             return {
                 casinoReview: TRANSLATE.CASINO_REVIEW[config.LANG],
@@ -144,6 +147,9 @@ import Helper from '~/helpers'
 </script>
 
 <style scoped>
+.casino_table_container {
+    overflow: hidden;
+}
 .casino_table_wrapper {
         background: var(--strong-blue);
     padding-top: 30px;
