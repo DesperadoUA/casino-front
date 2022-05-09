@@ -1,5 +1,5 @@
 <template>
-  <section class="casino_table_wrapper">
+  <section :class="'casino_table_wrapper '+bg" >
       <div class="container casino_table_container">
           <app_sub_ttl :title="title" />
           <app_sub_content :text="text" />
@@ -147,9 +147,6 @@ import app_sub_content from '~/components/sub_content/app_sub_content'
 </script>
 
 <style scoped>
-.casino_table_container {
-    overflow: hidden;
-}
 .casino_table_wrapper {
         background: var(--strong-blue);
     padding-top: 30px;
@@ -413,6 +410,9 @@ import app_sub_content from '~/components/sub_content/app_sub_content'
     background: transparent;
 }
 @media (min-width: 320px) and (max-width: 767px) {
+    .casino_table_container {
+        overflow: hidden;
+    }
     .casino_table_item {
         width: 100%;
         margin-left: 20px;

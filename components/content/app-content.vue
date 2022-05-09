@@ -39,10 +39,10 @@ import TRANSLATE from '~/helpers/translate'
                 } else {
                     arrH.forEach( (item, index) => {
                         str += `<li class="${item.dataset.deep} article_menu_item">
-                      <a href="#heading_${index}" class="article_menu_link">
-                        ${item.innerHTML}
-                      </a>
-                    </li>`
+                                <a href="#heading_${index}" class="article_menu_link">
+                                    ${item.innerHTML}
+                                </a>
+                                </li>`
                     })
                     str += '</ol>'
                     menu.insertAdjacentHTML('afterBegin', str)
