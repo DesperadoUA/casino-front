@@ -1,5 +1,8 @@
 <template>
   <main>
+      <app_payment_loop
+        :posts='data.body.payments'
+       />
       <app_content 
            :value='data.body.content' 
            bg='bg-strong-blue'
@@ -13,6 +16,7 @@
 
 <script>
     import DAL_Builder from '~/DAL/builder'
+    import app_payment_loop from '~/components/payment_loop/app_payment_loop'
     import app_content from '~/components/content/app-content'
     import app_faq from '~/components/faq/app_faq'
     import config from '~/config'
@@ -21,7 +25,7 @@ export default {
     data: () => {
         return {}
     },
-    components: {app_content, app_faq},
+    components: {app_content, app_faq, app_payment_loop},
     async asyncData({store, route}) {
         const request = new DAL_Builder()
         const response = await request.postType('pages')

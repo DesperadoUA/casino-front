@@ -34,7 +34,6 @@
     import app_casino_loop from '~/components/casino_loop/app_casino_loop'
     import app_game_loop from '~/components/game_loop/app_game_loop'
     import app_banner from '~/components/banner/app_banner_main'
-    import app_blog_card from '~/components/blog_card/app_blog_card'
     import app_bonus_loop from '~/components/bonus_loop/app_bonus_loop'
     import app_faq from '~/components/faq/app_faq'
     import config from '~/config'
@@ -77,7 +76,7 @@ export default {
 			return this.bonusText
 		},
 	},
-    components: {app_content, app_casino_loop, app_banner, app_blog_card, app_game_loop, app_bonus_loop, app_faq},
+    components: {app_content, app_casino_loop, app_banner, app_game_loop, app_bonus_loop, app_faq},
     async asyncData({store, route}) {
         const request = new DAL_Builder()
         const response = await request.postType('pages')
