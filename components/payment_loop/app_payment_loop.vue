@@ -150,5 +150,9 @@ img:hover {
   color: var(--orange);
   transition: linear 0.2s;
 }
-
+@media (min-width: 320px) and (max-width: 767px) {
+    .card-wrapper {
+       justify-content: center;
+    }
+}
 </style>
