@@ -1,6 +1,6 @@
 <template>
   <main>
-      <app_casino_loop 
+      <app_game_loop 
            :posts='data.body.posts'
             bg='bg-strong-black'
       />
@@ -19,27 +19,27 @@
     import DAL_Builder from '~/DAL/builder'
     import app_content from '~/components/content/app-content'
     import app_faq from '~/components/faq/app_faq'
-    import app_casino_loop from '~/components/casino_loop/app_casino_loop'
+    import app_game_loop from '~/components/game_loop/app_game_loop'
     import config from '~/config'
 export default {
-    name: 'casino-category-page',
+    name: 'game-category-page',
     data: () => {
         return {}
     },
-    components: {app_content, app_faq, app_casino_loop},
+    components: {app_content, app_faq, app_game_loop},
     async asyncData({route, error}) {
         const request = new DAL_Builder()
-        const response = await request.postType('casinos')
+        const response = await request.postType('games')
                                       .url(route.params.id)
                                       .get() 
         if(response.data.confirm === 'error') {
-                 error({ statusCode: 404, message: 'Post not found' })
+            error({ statusCode: 404, message: 'Post not found' })
         }
         else {
-                 const body = response.data.body
-                 const data = {body}
-                 data.body.currentUrl = config.BASE_URL + route.path
-                 return {data}
+            const body = response.data.body
+            const data = {body}
+            data.body.currentUrl = config.BASE_URL + route.path
+            return {data}
         }
     },
     head() {
