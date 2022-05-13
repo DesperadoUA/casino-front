@@ -1,8 +1,9 @@
 <template>
   <main>
-      <app_blog_loop
-        :posts='data.body.articles'
-       />
+      <app_bonus_loop 
+           :posts='data.body.posts'
+            bg='bg-strong-black'
+      />
       <app_content 
            :value='data.body.content' 
            bg='bg-strong-blue'
@@ -16,24 +17,30 @@
 
 <script>
     import DAL_Builder from '~/DAL/builder'
-    import app_blog_loop from '~/components/blog_loop/app_blog_loop'
     import app_content from '~/components/content/app-content'
     import app_faq from '~/components/faq/app_faq'
+    import app_bonus_loop from '~/components/bonus_loop/app_bonus_loop'
     import config from '~/config'
 export default {
-    name: 'article-page',
+    name: 'bonus-category-page',
     data: () => {
         return {}
     },
-    components: {app_content, app_faq, app_blog_loop},
-    async asyncData({store, route}) {
+    components: {app_content, app_faq, app_bonus_loop},
+    async asyncData({route, error}) {
         const request = new DAL_Builder()
-        const response = await request.postType('pages')
-                                      .url('article')
+        const response = await request.postType('bonuses')
+                                      .url(route.params.id)
                                       .get() 
-        const {data} = response
-        data.body.currentUrl = config.BASE_URL
-        return {data}
+        if(response.data.confirm === 'error') {
+                 error({ statusCode: 404, message: 'Post not found' })
+        }
+        else {
+                 const body = response.data.body
+                 const data = {body}
+                 data.body.currentUrl = config.BASE_URL + route.path
+                 return {data}
+        }
     },
     head() {
         return {
