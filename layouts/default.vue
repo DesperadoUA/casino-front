@@ -38,8 +38,8 @@
     --light-orange: #ff7300af;
     --white-gradient: linear-gradient(0deg, #F9FCFF, #F9FCFF), #FFFFFF;
     --blue-gradient: linear-gradient(270deg, #F9FCFF 0%, #F2F9FF 100%);
-    --middle-blue-gradient: linear-gradient(0deg, #E7F0FB, #E7F0FB), #FFFFFF;
-    --strong-blue-gradient: linear-gradient(0deg, #E7F0FB, #E7F0FB), linear-gradient(0deg, #F9FCFF, #F9FCFF), #C4C4C4;
+    --middle-blue-gradient: linear-gradient(#737DFE, #FFCAC9);
+    --strong-blue-gradient: linear-gradient(#402662, #3900A6);
     --orange-gradient: linear-gradient(#ff3c00, #ff7300af);
     --font: 'Podkova';
     --font-semi: 'Open Sans Semi';

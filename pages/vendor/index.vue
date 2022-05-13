@@ -1,5 +1,8 @@
 <template>
   <main>
+      <app_vendor_loop
+        :posts='data.body.vendors'
+       />
       <app_content 
            :value='data.body.content' 
            bg='bg-strong-blue'
@@ -15,13 +18,14 @@
     import DAL_Builder from '~/DAL/builder'
     import app_content from '~/components/content/app-content'
     import app_faq from '~/components/faq/app_faq'
+    import app_vendor_loop from '~/components/vendor_loop/app_vendor_loop'
     import config from '~/config'
 export default {
     name: 'vendor-page',
     data: () => {
         return {}
     },
-    components: {app_content, app_faq},
+    components: {app_content, app_faq, app_vendor_loop},
     async asyncData({store, route}) {
         const request = new DAL_Builder()
         const response = await request.postType('pages')

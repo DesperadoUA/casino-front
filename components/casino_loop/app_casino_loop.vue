@@ -148,7 +148,7 @@ import app_sub_content from '~/components/sub_content/app_sub_content'
 
 <style scoped>
 .casino_table_wrapper {
-        background: var(--strong-blue);
+    background: var(--strong-blue);
     padding-top: 30px;
     padding-bottom: 30px;
 }
@@ -287,7 +287,7 @@ import app_sub_content from '~/components/sub_content/app_sub_content'
 .face thead {
     width: 100%;
     font-size: 12px;
-    display: block;
+    display: none;
     box-sizing: border-box;
 }
 .face tbody {
@@ -403,7 +403,7 @@ import app_sub_content from '~/components/sub_content/app_sub_content'
     text-decoration: none;
 }
 .casino_footer {
-    padding: 5px 15px;
+    padding: 15px 15px;
     display: flex;
     justify-content: space-around;
     box-sizing: border-box;
