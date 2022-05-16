@@ -1,5 +1,9 @@
 <template>
   <main>
+      <app_category_link 
+           :value="data.body.category" 
+           v-if="data.body.category.length" 
+        />
       <app_bonus_loop 
            :posts='data.body.bonuses'
            bg='bg-strong-black'
@@ -20,13 +24,14 @@
     import app_bonus_loop from '~/components/bonus_loop/app_bonus_loop'
     import app_content from '~/components/content/app-content'
     import app_faq from '~/components/faq/app_faq'
+    import app_category_link from '~/components/category_link/app_category_link'
     import config from '~/config'
 export default {
     name: 'bonus-page',
     data: () => {
         return {}
     },
-    components: {app_content, app_faq, app_bonus_loop},
+    components: {app_content, app_faq, app_bonus_loop, app_category_link},
     async asyncData({store, route}) {
         const request = new DAL_Builder()
         const response = await request.postType('pages')

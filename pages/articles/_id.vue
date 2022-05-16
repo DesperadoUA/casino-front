@@ -1,5 +1,9 @@
 <template>
   <main>
+      <app_category_link 
+           :value="data.body.category" 
+           v-if="data.body.category.length" 
+        />
       <app_article_loop 
            :posts='data.body.posts'
             bg='bg-strong-black'
@@ -20,13 +24,14 @@
     import app_content from '~/components/content/app-content'
     import app_faq from '~/components/faq/app_faq'
     import app_article_loop from '~/components/blog_loop/app_blog_loop'
+    import app_category_link from '~/components/category_link/app_category_link'
     import config from '~/config'
 export default {
     name: 'article-category-page',
     data: () => {
         return {}
     },
-    components: {app_content, app_faq, app_article_loop},
+    components: {app_content, app_faq, app_article_loop,  app_category_link},
     async asyncData({route, error}) {
         const request = new DAL_Builder()
         const response = await request.postType('articles')
