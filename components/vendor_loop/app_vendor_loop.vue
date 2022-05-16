@@ -1,5 +1,5 @@
 <template>
-    <section class="vendor-loop">
+    <section :class="'vendor-loop '+bg">
         <div class="container">
             <div class="row vendor-row">
                 <article class="flip" v-for="(item, index) in posts" :key="index">
@@ -28,7 +28,11 @@
 			title: {
 				type: String,
 				default: undefined
-			}
+			},
+            bg: {
+        		type: String,
+                default: ''
+            }
 		},
 		data(){
 			return {

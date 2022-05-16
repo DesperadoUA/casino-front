@@ -1,8 +1,8 @@
 <template>
   <main>
-      <app_game_loop  
-           :posts='data.body.games'
-           bg='bg-strong-black'
+      <app_license_loop 
+           :posts='data.body.posts'
+            bg='bg-strong-black'
       />
       <app_content 
            :value='data.body.content' 
@@ -19,22 +19,28 @@
     import DAL_Builder from '~/DAL/builder'
     import app_content from '~/components/content/app-content'
     import app_faq from '~/components/faq/app_faq'
-    import app_game_loop from '~/components/game_loop/app_game_loop'
+    import app_license_loop from '~/components/license_loop/app_license_loop'
     import config from '~/config'
 export default {
-    name: 'game-page',
+    name: 'license-category-page',
     data: () => {
         return {}
     },
-    components: {app_content, app_faq, app_game_loop},
-    async asyncData({store, route}) {
+    components: {app_content, app_faq, app_license_loop},
+    async asyncData({route, error}) {
         const request = new DAL_Builder()
-        const response = await request.postType('pages')
-                                      .url('game')
+        const response = await request.postType('licenses')
+                                      .url(route.params.id)
                                       .get() 
-        const {data} = response
-        data.body.currentUrl = config.BASE_URL
-        return {data}
+        if(response.data.confirm === 'error') {
+                 error({ statusCode: 404, message: 'Post not found' })
+        }
+        else {
+                 const body = response.data.body
+                 const data = {body}
+                 data.body.currentUrl = config.BASE_URL + route.path
+                 return {data}
+        }
     },
     head() {
         return {

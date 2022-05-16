@@ -1,5 +1,5 @@
 <template>
-    <section class="license-loop">
+    <section :class="'license-loop '+bg">
        <div class="container">
            <div class="row license-row">
                <article class="card"
@@ -31,7 +31,11 @@
 			title: {
 				type: String,
 				default: undefined
-			}
+			},
+            bg: {
+        		type: String,
+                default: ''
+            }
 		},
 		data(){
 			return {

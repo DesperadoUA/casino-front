@@ -1,5 +1,5 @@
 <template>
-  <section class="blog_card_wrapper">
+  <section :class="'blog_card_wrapper '+bg">
     <div class="container">
         <div class="row blog-row">
             <article class="blog_card_item"
@@ -38,6 +38,10 @@
         	posts: {
         		type: Array,
                 default: []
+            },
+            bg: {
+        		type: String,
+                default: ''
             }
         },
         data(){

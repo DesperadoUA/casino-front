@@ -2,6 +2,7 @@
   <main>
       <app_bonus_loop 
            :posts='data.body.bonuses'
+           bg='bg-strong-black'
       />
       <app_content 
            :value='data.body.content' 

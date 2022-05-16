@@ -2,6 +2,7 @@
   <main>
       <app_payment_loop
         :posts='data.body.payments'
+        bg='bg-strong-black'
        />
       <app_content 
            :value='data.body.content' 

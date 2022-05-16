@@ -1,5 +1,5 @@
 <template>
-    <section class="payment-loop">
+    <section :class="'payment-loop '+bg">
         <div class="container">
             <div class="card-wrapper">
                 <article class="card"
@@ -39,7 +39,11 @@
 			title: {
 				type: String,
 				default: undefined
-			}
+			},
+      bg: {
+        type: String,
+        default: ''
+      }
 		},
 		data(){
 			return {

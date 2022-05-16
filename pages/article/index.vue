@@ -2,6 +2,7 @@
   <main>
       <app_blog_loop
         :posts='data.body.articles'
+        bg='bg-strong-black'
        />
       <app_content 
            :value='data.body.content' 

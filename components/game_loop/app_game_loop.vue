@@ -1,5 +1,5 @@
 <template>
-  <section class="game_table_wrapper">
+  <section :class="'game_table_wrapper '+bg" >
       <div class="container game_table_container">
           <app_sub_ttl :title="title" />
           <app_sub_content :text="text" />

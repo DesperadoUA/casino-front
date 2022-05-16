@@ -2,6 +2,7 @@
   <main>
       <app_vendor_loop
         :posts='data.body.vendors'
+        bg='bg-strong-black'
        />
       <app_content 
            :value='data.body.content' 

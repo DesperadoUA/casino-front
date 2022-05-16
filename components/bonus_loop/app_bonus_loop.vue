@@ -1,5 +1,5 @@
 <template>
-    <section class="bonus_loop">
+    <section :class="'bonus_loop '+bg">
         <div class="container">
             <app_sub_ttl :title="title" />
             <app_sub_content :text="text" />
@@ -49,6 +49,10 @@ import app_sub_content from '~/components/sub_content/app_sub_content'
             },
             text: {
                 type: String,
+                default: ''
+            },
+            bg: {
+        		type: String,
                 default: ''
             }
         },

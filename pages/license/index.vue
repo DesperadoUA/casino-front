@@ -2,6 +2,7 @@
   <main>
       <app_license_loop
            :posts='data.body.licenses'
+           bg='bg-strong-black'
        />
       <app_content 
            :value='data.body.content' 
