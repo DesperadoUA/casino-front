@@ -1,5 +1,7 @@
 <template>
   <main>
+      <app_breadcrumbs 
+           :value="data.body.breadcrumbs" />
        <app_category_link 
            :value="data.body.category" 
            v-if="data.body.category.length" 
@@ -25,13 +27,14 @@
     import app_faq from '~/components/faq/app_faq'
     import app_payment_loop from '~/components/payment_loop/app_payment_loop'
     import app_category_link from '~/components/category_link/app_category_link'
+    import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
     import config from '~/config'
 export default {
     name: 'payment-category-page',
     data: () => {
         return {}
     },
-    components: {app_content, app_faq, app_payment_loop, app_category_link},
+    components: {app_content, app_faq, app_payment_loop, app_category_link, app_breadcrumbs},
     async asyncData({route, error}) {
         const request = new DAL_Builder()
         const response = await request.postType('payments')
@@ -41,10 +44,14 @@ export default {
                  error({ statusCode: 404, message: 'Post not found' })
         }
         else {
-                 const body = response.data.body
-                 const data = {body}
-                 data.body.currentUrl = config.BASE_URL + route.path
-                 return {data}
+            const {data} = response
+            data.body.currentUrl = config.BASE_URL + route.path
+            data.body.breadcrumbs = [
+                {...config.ROOT_BREADCRUMBS[config.LANG]},
+                {...config.BREADCRUMBS_PAYMENTS[config.LANG]},
+                {title:data.body.title, permalink: ''},
+            ]
+            return {data}
         }
     },
     head() {
