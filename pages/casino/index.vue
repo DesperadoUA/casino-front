@@ -1,23 +1,22 @@
 <template>
   <main>
+      <app_h1 
+           :h1='data.body.h1' 
+           :text='data.body.short_desc' />
       <app_breadcrumbs 
            :value="data.body.breadcrumbs" />
       <app_category_link 
            :value="data.body.category" 
-           v-if="data.body.category.length" 
-        />
+           v-if="data.body.category.length" />
       <app_casino_loop 
            :posts='data.body.casinos'
-            bg='bg-strong-black'
-      />
+            bg='bg-strong-black' />
       <app_content 
            :value='data.body.content' 
-           bg='bg-strong-blue'
-       />
+           bg='bg-strong-blue' />
        <app_faq 
            :value='data.body.faq'
-           title='Faq'
-       />
+           title='Faq' />
   </main>
 </template>
 
@@ -28,13 +27,14 @@
     import app_casino_loop from '~/components/casino_loop/app_casino_loop'
     import app_category_link from '~/components/category_link/app_category_link'
     import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
+    import app_h1 from '~/components/h1/app_h1'
     import config from '~/config'
 export default {
     name: 'casino-page',
     data: () => {
         return {}
     },
-    components: {app_content, app_faq, app_casino_loop, app_category_link, app_breadcrumbs},
+    components: {app_content, app_faq, app_casino_loop, app_category_link, app_breadcrumbs, app_h1},
     async asyncData({store, route}) {
         const request = new DAL_Builder()
         const response = await request.postType('pages')

@@ -19,7 +19,7 @@
     import app_h1 from '~/components/h1/app_h1'
     import config from '~/config/index'
     export default {
-        name: "app_single_payment",
+        name: "app_single_game",
         components: {app_content, app_breadcrumbs, app_h1},
         data: () => {
             return {
@@ -28,7 +28,7 @@
         },
         async asyncData({route, error}) {
             const request = new DAL_Builder()
-            const response = await request.postType('payment')
+            const response = await request.postType('game')
                                           .url(route.params.id)
                                           .get()
              if(response.data.confirm === 'error') {
@@ -39,7 +39,7 @@
                 data.body.currentUrl = config.BASE_URL + route.path
                 data.body.breadcrumbs = [
                     {...config.ROOT_BREADCRUMBS[config.LANG]},
-                    {...config.BREADCRUMBS_PAYMENTS[config.LANG]},
+                    {...config.BREADCRUMBS_SLOTS[config.LANG]},
                     {title:data.body.title, permalink: ''},
                 ]
                 return {data}

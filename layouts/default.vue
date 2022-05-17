@@ -41,6 +41,7 @@
     --middle-blue-gradient: linear-gradient(#737DFE, #FFCAC9);
     --strong-blue-gradient: linear-gradient(#402662, #3900A6);
     --orange-gradient: linear-gradient(#ff3c00, #ff7300af);
+    --gold-yellow-gradient: linear-gradient(91.65deg,#f6ceb5d5,#e1bdb9dc 12.97%,#ab8bc1 38.11%,#7b62c2 64.42%,#6642c0 86.94%,#603bbf 102.2%);
     --font: 'Podkova';
     --font-semi: 'Open Sans Semi';
     --theme-cr-2: #ff3c00;
