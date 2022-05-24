@@ -2,223 +2,304 @@
   <section class="casino_top">
       <div class="container">
           <div class="casino_top_wrapper">
-              <div class="casino_top_thumbnail">
-                     <img :src="value.thumbnail" 
-                     loading="lazy"
-                     class="casino_top_img" 
-                     width="145"
-                     height="110"/>
+             <div class="casino_top_thumbnail">
+                 <img :src="value.thumbnail" :alt="value.title">
+                 <p class="casino_top_subttl">{{value.title}}</p>
+                 <div class="casino_top_rating_wrapper">
+                    <div class="casino_top_rating">
+                        <div class="casino_top_rating_wrapper">
+                            <div class="casino_top_progress" :style="`width:${value.rating}%`"></div>
+                        </div>
+                    </div>
+                    <div class="casino_top_rating_value">
+                        {{value.rating}}/100
+                    </div>
                  </div>
-              <div class="casino_top_title">
-                  <h1>{{value.h1}}</h1>
-                  <div class="casino_top_license" v-if="value.licensed.length !== 0">
-                      <img class="casino-card__license"
-                           src="/img/license.png"
-                           alt="">
-                      <img v-for="(item, index) in value.licensed"
-                           :src="item"
-                           :key="index"
-                           class="casino_card_license"
-                      >
-                      <span class="casino-card__license-txt" v-if="value.licensed.length !== 0">{{license}}</span>
-                  </div>
-                  <div class="casino_item_buttons_box casino_top_btn_wrapper">
-                      <button class="btn_ref" @click="refActivate(value.ref)" >Перейти в казино</button>
-                  </div>
-              </div>
-              <div class="casino_top_bonus" v-if="value.bonuses.length > 1">
-                  <div class="casino_top_bonus_item">
-                      <div class="casino_top_bonus_item_title">
-                          {{value.bonuses[1].bonuses_title}}
-                      </div>
-                      <div class="casino_top_bonus_item_title color-gold font-bold">
-                          {{value.bonuses[1].bonuses_value}}
-                      </div>
-                  </div>
-              </div>
-              <div class="casino_top_bonus" v-if="value.bonuses.length > 2">
-                  <div class="casino_top_bonus_item">
-                      <div class="casino_top_bonus_item_title">
-                          {{value.bonuses[2].bonuses_title}}
-                      </div>
-                      <div class="casino_top_bonus_item_title color-gold font-bold">
-                          {{value.bonuses[2].bonuses_value}}
-                      </div>
-                  </div>
-              </div>
+             </div>
+             <div class="casino_top_characters">
+                <table class="casino_top_table">
+                    <caption class="casino_top_table_caption">{{characteristicsGamingHall}}</caption>
+                        <thead class="casino_top_table_thead">
+                            <tr>
+                                <th scope="col">{{meaning}}</th>
+                                <th scope="col">{{description}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{yearFoundation}}</td>
+                                <td>{{value.year}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{minDeposit}}</td>
+                                <td>{{value.min_deposit}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{minPay}}</td>
+                                <td>{{value.min_payments}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{withdrawalPeriod}}</td>
+                                <td>{{value.withdrawal}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{numberGames}}</td>
+                                <td>{{value.number_games}}</td>
+                            </tr>
+                        </tbody>
+                </table>
+             </div>
+             <div class="casino_top_characters">
+                <table class="casino_top_table">
+                    <caption class="casino_top_table_caption">{{supportAndFeedback}}</caption>
+                        <thead class="casino_top_table_thead">
+                            <tr>
+                                <th scope="col">{{meaning}}</th>
+                                <th scope="col">{{description}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{phone}}</td>
+                                <td>{{value.phone}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{email}}</td>
+                                <td>{{value.email}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{chat}}</td>
+                                <td>{{value.chat}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{site}}</td>
+                                <td>{{value.site}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{license}}</td>
+                                <td>{{value.license.join(',')}}</td>
+                            </tr>
+                        </tbody>
+                </table>
+             </div>
+             <div class="casino_top_bonuses">
+                <div class="casino_top_bonuses_item shadow">
+                    <div class="casino_top_bonus_ttl">{{welcomBonus}}</div>
+                    <div class="casino_top_bonus_value">{{value.welcome_bonus}}</div>
+                </div>
+                <div class="casino_top_bonuses_item shadow">
+                    <div class="casino_top_bonus_ttl">{{freespins}}</div>
+                    <div class="casino_top_bonus_value">{{value.freespins}}</div>
+                </div>
+                <div class="casino_top_bonuses_item shadow">
+                    <button type="button" class="casino_top_bonuses_btn" @click="refActivate(value)">{{getBonus}}</button>
+                </div>
+             </div>
           </div>
       </div>
   </section>
 </template>
 
 <script>
+import config from '~/config'
+import TRANSLATE from '~/helpers/translate'
+import Helper from '~/helpers'
     export default {
         name: "app_casino_top",
         props: ['value'],
         data(){
             return {
-				license: "Лицензия"
+                characteristicsGamingHall: TRANSLATE.CHARACTERISTICS_GAMING_HALL[config.LANG],
+                supportAndFeedback: TRANSLATE.SUPPORT_AND_FEEDBACK[config.LANG],
+                meaning: TRANSLATE.MEANING[config.LANG],
+                description: TRANSLATE.DESCRIPTION[config.LANG],
+                yearFoundation: TRANSLATE.YEAR_FOUNDATION[config.LANG],
+                minDeposit: TRANSLATE.MIN_DEPOSIT[config.LANG],
+                minPay: TRANSLATE.MIN_PAY[config.LANG],
+                withdrawalPeriod: TRANSLATE.WITHDRAWAL_PERIOD[config.LANG],
+                numberGames: TRANSLATE.NUMBER_GAMES[config.LANG],
+                welcomBonus: TRANSLATE.WELCOME_BONUS[config.LANG],
+                freespins: TRANSLATE.FREESPINS[config.LANG],
+                getBonus: TRANSLATE.GET_BONUS[config.LANG],
+                phone: TRANSLATE.PHONE[config.LANG],
+                email: TRANSLATE.EMAIL[config.LANG],
+                chat: TRANSLATE.CHAT[config.LANG],
+                site: TRANSLATE.SITE[config.LANG],
+                license: TRANSLATE.LICENSE[config.LANG]
             }
         },
-        methods: {
-            refActivate(ref) {
-               if(ref.length !== 0) {
-                    const min = 0
-                    const max = ref.length - 1
-                    const random = Math.floor(Math.random() * (max - min + 1)) + min
-                    window.open(ref[random].casino_ref, '_blank')
-                } 
+         methods: {
+            refActivate(item) {
+                Helper.refActivate(item)
             }
-        }
+        },
     }
 </script>
 <style> 
-    .casino_top_list li {
-        display: inline-block;
-        color: var(--blue);
-        padding: 3px 10px;
-        border: 1px solid var(--gray);
-        box-sizing: border-box;
-        border-radius: 7px;
-        margin-right: 5px;
-        margin-top: 5px;
-    }
-    .casino_top_list li a {
-        text-decoration: none;
-        font-family: var(--font);
-    }
-    .casino_top_list .green {
-      color: var(--green);
-      border: 1px solid var(--green);
-    }
-    .casino_top_list a {
-        color: var(--blue);
-    }
-    .casino_top_list .green a {
-        color: var(--green);
-    }
-    .casino_top_currency_item img {
-        margin-right: 15px;
-    }
     .casino_top {
-        padding-top: 30px;
-        padding-bottom: 20px;
+        padding: 30px 0px;
         background: var(--strong-blue);
     }
     .casino_top_wrapper {
         display: flex;
     }
     .casino_top_thumbnail {
-        width: 145px;
-        min-width: 145px;
-        height: 110px;
+        width: 20%;
     }
-    .casino_top_img {
+    .casino_top_thumbnail img {
+        width: 100%;
+        border-radius: 4px;
+    }
+    .casino_top_subttl {
+        text-align: center;
+        margin-top: 3px;
+        margin-bottom: 10px;
+        font-family: var(--font);
+        color: var(--gold);
+        font-size: 20px;
+    }
+    .casino_top_characters {
+        width: 30%;
+        padding: 0px 15px;
+        box-sizing: border-box;
+    }
+    .casino_top_bonuses {
+        width: 20%;
+        z-index: 1;
+    }
+    .casino_top_table_caption {
+        font-family: var(--font);
+        color: var(--gold);
+        width: 100%;
+        display: block;
+        border-bottom: 1px solid var(--orange);
+        padding: 3px;
+        box-sizing: border-box;
+    }
+    .casino_top_table_thead {
+        display: none;
+    }
+    .casino_top_table {
+        width: 100%;
+         border-radius: 4px;
+         border:1px solid var(--orange);
+    }
+    .casino_top_table tr {
+        width: 100%;
+        display: flex;
+    }
+    .casino_top_table td:first-child {
+       width: 40%;
+       border:1px solid var(--orange);
+    }
+    .casino_top_table td:last-child {
+       width: 60%;
+       border:1px solid var(--orange);
+    }
+    .casino_top_table td {
+        padding: 6px 5px;
+        font-size: 16px;
+    }
+    .casino_top_table tbody {
+        display: block;
+        width: 100%;
+    }
+    .casino_top_bonus_ttl {
+        text-align: center;
+        font-family: var(--font);
+        color: var(--gold);
+        font-size: 20px;
+    }
+    .casino_top_bonus_value {
+        text-align: center;
+        font-family: var(--font);
+        color: var(--orange);
+        font-size: 20px;
+        margin-top: 5px;
+    }
+    .casino_top_bonuses_item {
+        padding: 5px;
+        margin-bottom: 25px;
+    }
+    .casino_top_bonuses_btn {
+        width: 100%;
+        height: 50px;
+        background: transparent;
+        border: none;
+        font-family: var(--font);
+        color: var(--gold);
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .casino_top_rating_wrapper {
+        display: flex;
+        position: relative;
+        padding: 10px;
+        background: linear-gradient(#616161 0%, #333 10%, #222);
+        transition: 0.5s;
+        align-items: center;
+    }
+    .casino_top_rating_wrapper:before {
+        content: '';
+        position: absolute;
+        top:0px;
+        left: 0px;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        background: rgba(255,255,255,.1);
+        z-index: 10;
     }
-    .casino_top_title {
-        font-family: var(--font);
-        font-style: normal;
-        font-size: 22px;
-        line-height: 30px;
-        color: var(--white);
-        padding-left: 22px;
-        padding-right: 22px;
-        width: 60%;
+    .casino_top_rating {
+    width: 75%;
+}
+.casino_top_rating_value {
+    width: 25%;
+    font-family: var(--font);
+    color:var(--white);
+    display: flex;
+    line-height: 20px;
+    justify-content: flex-end;
+}
+.casino_top_rating_wrapper {
+    border-radius: 10px;
+    background: #151515;
+    box-shadow: inset 0 0 10px #000;
+    overflow: hidden;
+    position: relative;
+}
+.casino_top_progress {
+    position:absolute;
+    top:0;
+    left:0;
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #ffee54, #ff00ca);
+    box-shadow: inset 0 0 2px #000;
+    animation: animate 2s ease-in-out forwards;
+}
+@keyframes animate {
+    from {
+        width: 0;
     }
-    .btn_ref {
-        width: 180px;
-        height: 46px;
-        background: var(--green);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        box-sizing: border-box;
-        box-shadow: inset 0px 0px 4px rgba(255, 255, 255, 0.25);
-        border-radius: 10px;
-        display: inline-block;
-        text-align: center;
-        font-family: var(--font);
-        font-style: normal;
-        font-size: 12px;
-        color: var(--black);
-        text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
-        text-decoration: none;
-        line-height: 46px;
-        margin-bottom: 15px;
-        cursor: pointer;
-        text-transform: uppercase;
+}
+@media (min-width: 320px) and (max-width: 767px) {
+    .casino_top_wrapper {
+        flex-wrap: wrap;
     }
-    .casino_top_btn_wrapper {
-        margin-top: 15px;
+    .casino_top_thumbnail {
+        width: 100%;
+        margin-bottom: 20px;
     }
-    .casino_top_bonus {
-        width: 15%;
-        padding-left: 10px;
-        padding-right: 10px;
-        box-sizing: border-box;
+    .casino_top_characters {
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 0px;
     }
-    .casino_card_license {
-        height: 25px;
+    .casino_top_bonuses {
+         width: 100%;
     }
-    .casino_top_license {
-        margin-top: 20px;
+    .casino_top_bonuses_item:last-child {
+        margin-bottom: 0px;
     }
-    .casino-card__license-txt {
-        font-size: 12px;
-    }
-    .casino_top_bonus_item {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        border-left: 1px solid var(--white);
-        border-right: 1px solid var(--white);
-        text-align: center;
-    }
-    .casino_top_bonus_item_title {
-        text-transform: uppercase;
-        margin-bottom: 5px;
-        font-family: var(--font);
-        color: var(--light-blue);
-    }
-    @media (min-width: 320px) and (max-width: 767px) {
-        .casino_top_wrapper {
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .casino_top_title {
-            width: 100%;
-            text-align: center;
-            margin-top: 20px;
-        }
-        .casino_top_title h1 {
-            text-align: center;
-        }
-        .casino_top_bonus {
-            width: 48%;
-        }
-    }
-    @media (min-width: 768px) and (max-width: 1200px) {
-        .casino_top_title {
-            width: 75%;
-            box-sizing: border-box;
-            padding-right: 0px;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .casino_top_thumbnail {
-            width: 25%;
-        }
-        .casino_top_wrapper {
-            flex-wrap: wrap;
-        }
-        .casino_top_bonus {
-            width: 48%;
-        }
-        .casino_top_title h1 {
-            width: 100%;
-        }
-        .casino_top_license, .casino_item_buttons_box {
-            width: 50%;
-        }
-    }
+}
 </style>

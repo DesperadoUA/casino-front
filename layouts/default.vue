@@ -45,6 +45,7 @@
     --font: 'Podkova';
     --font-semi: 'Open Sans Semi';
     --theme-cr-2: #ff3c00;
+    --star_full: '/img/stars.png'
   }
   *{
     margin: 0px;
