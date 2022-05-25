@@ -4,7 +4,9 @@
             :h1='data.body.h1' 
             :text='data.body.short_desc' />
         <app_breadcrumbs 
-           :value="data.body.breadcrumbs" />
+            :value='data.body.breadcrumbs' />
+        <app_bonus_top 
+            :value='data.body'/>
         <app_content 
             :value='data.body.content' 
             bg='bg-strong-blue'
@@ -17,10 +19,11 @@
     import app_content from '~/components/content/app-content'
     import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
     import app_h1 from '~/components/h1/app_h1'
+    import app_bonus_top from '~/components/bonus_top/app_bonus_top'
     import config from '~/config/index'
     export default {
         name: "app_single_bonus",
-        components: {app_content, app_breadcrumbs, app_h1},
+        components: {app_content, app_breadcrumbs, app_h1, app_bonus_top},
         data: () => {
             return {
                data: {},

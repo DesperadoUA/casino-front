@@ -43,7 +43,16 @@
     import config from '~/config'
     export default {
         name: "app_reviews",
-        props: ['value', 'title'],
+        props: {
+            value: {
+                type: Array,
+                default: []
+            },
+            title: {
+                type: String,
+                default: []
+            },
+        },
         data(){
             return {
                 numberPostOnQuery: 5,
@@ -141,5 +150,6 @@
     justify-content: center;
     z-index: 1;
     position: relative;
+    padding-top: 25px;
 } 
 </style>
