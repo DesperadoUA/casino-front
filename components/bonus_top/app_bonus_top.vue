@@ -7,10 +7,10 @@
             </div>
             <div class="bonus_top_value">
                 <div class="bonus_top_value_item">
-                    Размер бонуса: <span>{{value.value_bonus}}</span>
+                    {{bonusValue}}: <span>{{value.value_bonus}}</span>
                 </div>
                 <div class="bonus_top_value_item">
-                    Wager: <span>{{value.bonus_wager}}</span>
+                    {{wager}}: <span>{{value.bonus_wager}}</span>
                 </div>
             </div>
             <div class="bonus_top_btn">
@@ -37,7 +37,9 @@ import Helper from '~/helpers'
         data(){
             return {
                 getBonus: TRANSLATE.GET_BONUS[config.LANG],
-                casinoReview: TRANSLATE.CASINO_REVIEW[config.LANG]
+                casinoReview: TRANSLATE.CASINO_REVIEW[config.LANG],
+                bonusValue: TRANSLATE.BONUS_VALUE[config.LANG],
+                wager: TRANSLATE.WAGER[config.LANG]
             }
         },
         mounted(){

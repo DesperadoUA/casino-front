@@ -5,6 +5,10 @@
             :text='data.body.short_desc' />
         <app_breadcrumbs 
            :value="data.body.breadcrumbs" />
+        <app_casino_loop 
+           :posts='data.body.casinos'
+            bg='bg-strong-black'
+        />
         <app_content 
             :value='data.body.content' 
             bg='bg-strong-blue'
@@ -17,10 +21,11 @@
     import app_content from '~/components/content/app-content'
     import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
     import app_h1 from '~/components/h1/app_h1'
+    import app_casino_loop from '~/components/casino_loop/app_casino_loop'
     import config from '~/config/index'
     export default {
         name: "app_single_license",
-        components: {app_content, app_breadcrumbs, app_h1},
+        components: {app_content, app_breadcrumbs, app_h1, app_casino_loop},
         data: () => {
             return {
                data: {},

@@ -11,6 +11,10 @@
             :value='data.body.content' 
             bg='bg-strong-blue'
         />
+        <app_bonus_loop 
+            :posts='data.body.bonuses'
+            :title='ttlBonuses + data.body.casino.title'
+            bg='bg-strong-black' />
     </main>
 </template>
 
@@ -20,13 +24,15 @@
     import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
     import app_h1 from '~/components/h1/app_h1'
     import app_bonus_top from '~/components/bonus_top/app_bonus_top'
+    import app_bonus_loop from '~/components/bonus_loop/app_bonus_loop'
     import config from '~/config/index'
+    import TRANSLATE from '~/helpers/translate'
     export default {
         name: "app_single_bonus",
-        components: {app_content, app_breadcrumbs, app_h1, app_bonus_top},
+        components: {app_content, app_breadcrumbs, app_h1, app_bonus_top, app_bonus_loop},
         data: () => {
             return {
-               data: {},
+                ttlBonuses: TRANSLATE.OTHER_BONUSES_FROM[config.LANG]
             }
         },
         async asyncData({route, error}) {
