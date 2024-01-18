@@ -208,6 +208,8 @@
             box-sizing: border-box;
             align-items: flex-start;
             padding-top: 100px;
+            margin-bottom: 20px;
+            padding-top: 100px;
         }
         .form-search__close.form-search__close {
             top:20px;

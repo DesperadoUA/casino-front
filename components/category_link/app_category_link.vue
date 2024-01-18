@@ -34,6 +34,10 @@
     @media (min-width: 992px) {
         padding: 10px 0px;
     }
+    @media (max-width: 540px) {
+        display: flex;
+        justify-content: center;
+    }
     a {
         text-decoration: none;
         display: inline-block;
@@ -90,6 +94,15 @@
         flex-wrap: wrap;
     }
 }
+.category-filter__container::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+}
+.category-filter__container::-webkit-scrollbar-track-piece {
+    background-color:#2a3950;
+}
+.category-filter__container::-webkit-scrollbar {
+    width: 7px;
+  }
 .category-filter-item {
     position: relative;
     display: block;

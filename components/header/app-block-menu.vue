@@ -5,7 +5,7 @@
         </div>
         <ul>
             <li v-for="(item, index) in value" :key="index" class="block_menu_item">
-                <NuxtLink :to="item.value_2">{{item.value_1}}</NuxtLink>
+               <NuxtLink event="" :to="item.value_2" @click.native="clickActionMenuItem(item.value_2)">{{item.value_1}}</NuxtLink>
             </li>
         </ul>
     </nav>
@@ -15,11 +15,18 @@ export default {
         name: "app-block-menu",
         props: {
             title: {type: String, default: ''},
-            value: {type: Array, default: []}
+            value: {type: Array, default: []},
+            clickItemMenu: {type:Function, default: ()=>{}}
         },
         data(){
             return {
             
+            }
+        },
+        methods: {
+            clickActionMenuItem(link) {
+                this.clickItemMenu()
+                this.$router.push({ path: link })
             }
         }
     }

@@ -161,7 +161,6 @@ import app_sub_content from '~/components/sub_content/app_sub_content'
 .casino_table_row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 .casino_table_item {
     display: flex;

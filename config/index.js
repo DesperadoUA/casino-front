@@ -31,7 +31,7 @@ export default {
         uk: {title: 'Платіжні системи', permalink: '/payment'}
     },
     BREADCRUMBS_VENDORS: {
-        ru: {title: 'Производители игор', permalink: '/vendor'},
+        ru: {title: 'Производители игр', permalink: '/vendor'},
         uk: {title: 'Виробники ігор', permalink: '/vendor'}
     },
 }

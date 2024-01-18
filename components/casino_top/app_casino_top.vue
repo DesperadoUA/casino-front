@@ -247,11 +247,11 @@ import Helper from '~/helpers'
         width: 100%;
         height: 100%;
         background: rgba(255,255,255,.1);
-        z-index: 10;
+        z-index: 1;
     }
     .casino_top_rating {
-    width: 75%;
-}
+      width: 75%;
+    }
 .casino_top_rating_value {
     width: 25%;
     font-family: var(--font);

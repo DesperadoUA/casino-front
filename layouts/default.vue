@@ -66,8 +66,8 @@
   img {
     max-width: 100%;
   }
-  ::-webkit-scrollbar {
-    width: 12px;
+  body::-webkit-scrollbar {
+    width: 8px;
   }
   ::-webkit-scrollbar-thumb {
     background: var(--orange-gradient);

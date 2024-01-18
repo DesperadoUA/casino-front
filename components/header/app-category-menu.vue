@@ -8,9 +8,9 @@
                     <div class="full-width">
                         <app_search />
                         <div class="wrapper_category_menu">
-                            <app_block_menu :title="highestRating" :value="thirdMenu"/>
-                            <app_block_menu :title="popularCasinos" :value="firstMenu"/>
-                            <app_block_menu :title="newCasino" :value="secondMenu"/>
+                            <app_block_menu :title="highestRating" :value="thirdMenu" :clickItemMenu="changeState"/>
+                            <app_block_menu :title="popularCasinos" :value="firstMenu" :clickItemMenu="changeState"/>
+                            <app_block_menu :title="newCasino" :value="secondMenu" :clickItemMenu="changeState"/>
                         </div>
                     </div>
                 </div>
@@ -37,6 +37,7 @@ export default {
         components:{app_search, app_block_menu},
         methods: {
 			changeState() {
+                console.log('Change state');
                 this.statusDrawer = !this.statusDrawer
                 this.close = !this.close
             }
@@ -160,5 +161,16 @@ export default {
         display: flex;
         justify-content: space-between;
         width: 100%;
+    }
+    @media (min-width: 320px) and (max-width: 767px) {
+        .wrapper_category_menu {
+            flex-wrap: wrap;
+        }
+        .drawer_menu {
+            overflow-y: scroll;
+        }
+        .block_menu {
+            margin-bottom: 30px;
+        }
     }
 </style>
